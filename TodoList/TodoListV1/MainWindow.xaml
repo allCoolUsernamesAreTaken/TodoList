@@ -1,0 +1,39 @@
+﻿<Window x:Class="TodoListV1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoListV1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Background="#FF2F5F46">
+        
+        <!-- Formulaire -->
+        <TextBox x:Name="txtBxIntitule" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Intitule" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtBxDuree" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Durée (en heures)" VerticalAlignment="Top" Width="120"/>
+        
+        <!-- Boutons de contrôles -->
+        <Button x:Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,66,0,0" Click="btnAjouter_Click"/>
+        <Button x:Name="btnRetirer" Content="Retirer" HorizontalAlignment="Left" Margin="90,66,0,0" VerticalAlignment="Top" Width="75" Click="btnRetirer_Click"/>
+        <Button x:Name="btnEditer" Content="Editer" HorizontalAlignment="Left" Margin="170,66,0,0" VerticalAlignment="Top" Width="75" Click="btnEditer_Click"/>
+        <Button x:Name="btnSerialiser" Content="Serialiser" HorizontalAlignment="Left" Margin="250,66,0,0" VerticalAlignment="Top" Width="75" Click="btnSerialiser_Click"/>
+        <Button x:Name="btnDeserialiser" Content="Deserialiser" HorizontalAlignment="Left" Margin="330,66,0,0" VerticalAlignment="Top" Width="75" Click="btnDeserialiser_Click"/>
+
+        <Button x:Name="btnInfos" Content="Infos" HorizontalAlignment="Left" Margin="434,10,0,0" VerticalAlignment="Top" Width="75" Click="btnInfos_Click"/>
+
+
+        <!-- Listview bindée sur la MainListeTaches -->
+        <ListView x:Name="lstVwListeTaches" ItemsSource="{Binding Path=ListeDeTaches, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="209" Margin="10,102,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.517,0.702" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="clmnIntitule" DisplayMemberBinding="{Binding Path=Intitule}" Header="Intitulé" Width="100"/>
+                    <GridViewColumn x:Name="clmnDuree" DisplayMemberBinding="{Binding Path=DureeString}" Header="Durée" Width="100"/>
+                    <GridViewColumn x:Name="clmnStatut" DisplayMemberBinding="{Binding Path=StatutString}" Header="Statut" Width="100"/>
+                    <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=CreationTimeString}" Header="Date de création" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</Window>

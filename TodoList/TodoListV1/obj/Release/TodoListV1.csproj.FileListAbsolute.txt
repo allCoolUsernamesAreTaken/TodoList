@@ -1,0 +1,14 @@
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\bin\Release\TodoListV1.exe.config
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\bin\Release\TodoListV1.exe
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\bin\Release\TodoListV1.pdb
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1.csprojResolveAssemblyReference.cache
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\MainWindow.g.cs
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\App.g.cs
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1_MarkupCompile.cache
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1_MarkupCompile.lref
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\MainWindow.baml
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1.g.resources
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1.Properties.Resources.resources
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1.csproj.GenerateResource.Cache
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1.exe
+C:\Users\angry\Documents\Visual Studio 2015\Projects\TodoList\TodoListV1\obj\Release\TodoListV1.pdb

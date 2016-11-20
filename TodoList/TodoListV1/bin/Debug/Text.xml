@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListeTaches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-11-20T07:57:10.0649825Z">
+  <ListeDeTaches Intitule="Ménage" Statut="aFaire" CreationTime="2016-11-19T22:45:45.1657524Z">
+    <Duree />
+    <DureeXml>PT2H</DureeXml>
+  </ListeDeTaches>
+  <ListeDeTaches Intitule="Jeux" Statut="aFaire" CreationTime="2016-11-19T22:45:45.1813785Z">
+    <Duree />
+    <DureeXml>PT1H30M</DureeXml>
+  </ListeDeTaches>
+  <ListeDeTaches Intitule="Travail" Statut="aFaire" CreationTime="2016-11-19T22:45:45.1970054Z">
+    <Duree />
+    <DureeXml>PT3H47M</DureeXml>
+  </ListeDeTaches>
+</ListeTaches>
