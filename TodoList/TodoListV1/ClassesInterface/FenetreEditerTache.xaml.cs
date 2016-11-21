@@ -27,6 +27,10 @@ namespace TodoListV1.ClassesInterface
         // ATTRIBUTS DE CLASSE
         private MainWindow _windowSender;
         private Tache _tacheTraitee;
+        private string _labelDuree;
+        private int _heures;
+        private int _minutes;
+
 
         // GETTERS & SETTERS
         public MainWindow WindowSender
@@ -41,6 +45,7 @@ namespace TodoListV1.ClassesInterface
                 _windowSender = value;
             }
         }
+
         public Tache TacheTraitee
         {
             get
@@ -54,6 +59,66 @@ namespace TodoListV1.ClassesInterface
             }
         }
 
+        public string LabelDuree
+        {
+            get
+            {
+                string hrsStr;
+                string mnsStr;
+
+                if (this.Heures < 10)
+                {
+                    hrsStr = "0" + this.Heures.ToString();
+                }
+                else
+                {
+                    hrsStr = this.Heures.ToString();
+                }
+
+                if (this.Minutes < 10)
+                {
+                    mnsStr = "0" + this.Minutes.ToString();
+                }
+                else
+                {
+                    mnsStr = this.Minutes.ToString();
+                }
+
+                return "Durée : " + hrsStr + ":" + mnsStr;
+            }
+
+            set
+            {
+                _labelDuree = value;
+            }
+        }
+
+        public int Heures
+        {
+            get
+            {
+                return _heures;
+            }
+
+            set
+            {
+                _heures = value;
+            }
+        }
+
+        public int Minutes
+        {
+            get
+            {
+                return _minutes;
+            }
+
+            set
+            {
+                _minutes = value;
+            }
+        }
+
 
         // CONSTRUCTEUR
         public FenetreEditerTache(MainWindow Wndw, Tache tch)
@@ -62,7 +127,12 @@ namespace TodoListV1.ClassesInterface
             // Récupération des données en local 
             this.WindowSender = Wndw;
             this.TacheTraitee = tch;
+            // Récupération des paramètres de timeSpan
+            this.Heures = (int)this.TacheTraitee.Duree.Hours;
+            this.Minutes = (int)this.TacheTraitee.Duree.Minutes;
+            // Datacontexts et bindings
             this.DataContext = TacheTraitee;
+            this.lblDuree.DataContext = LabelDuree;
             this.cmbBxStatut.ItemsSource = PapaJoe.ListeStatuts;
         }
 
@@ -76,12 +146,7 @@ namespace TodoListV1.ClassesInterface
 
             // Récupération des champs
             string itl = this.txtBxIntitule.Text;
-            double dr;
-            if (!double.TryParse(this.txtBxDuree.Text, out dr))
-            {
-                errorStr += "La durée est invalide";
-                ok = false;
-            }
+            TimeSpan dr = new TimeSpan(0, this.Heures, this.Minutes, 0);
             Statuts stt = (Statuts)this.cmbBxStatut.SelectedValue;
 
             // Envoi des champs pour update ou Message d'erreur
@@ -94,6 +159,14 @@ namespace TodoListV1.ClassesInterface
             {
                 MessageBox.Show(errorStr);
             }
+        }
+
+        private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int[] hrsMns = WindowSender.CalculDuree((int)this.sldrDuree.Value);
+            this.Heures = hrsMns[0];
+            this.Minutes = hrsMns[1];
+            this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
     }
 }

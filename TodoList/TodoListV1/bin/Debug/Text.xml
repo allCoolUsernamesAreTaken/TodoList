@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListeTaches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-11-20T07:57:10.0649825Z">
+<ListeTaches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-11-21T13:08:16.5068283Z">
   <ListeDeTaches Intitule="Ménage" Statut="aFaire" CreationTime="2016-11-19T22:45:45.1657524Z">
     <Duree />
     <DureeXml>PT2H</DureeXml>
@@ -11,5 +11,13 @@
   <ListeDeTaches Intitule="Travail" Statut="aFaire" CreationTime="2016-11-19T22:45:45.1970054Z">
     <Duree />
     <DureeXml>PT3H47M</DureeXml>
+  </ListeDeTaches>
+  <ListeDeTaches Intitule="Courses" Statut="aFaire" CreationTime="2016-11-21T13:07:55.7235184Z">
+    <Duree />
+    <DureeXml>PT30M</DureeXml>
+  </ListeDeTaches>
+  <ListeDeTaches Intitule="Beuverie" Statut="aFaire" CreationTime="2016-11-21T13:08:15.0433598Z">
+    <Duree />
+    <DureeXml>PT3H30M</DureeXml>
   </ListeDeTaches>
 </ListeTaches>

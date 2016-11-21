@@ -7,17 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="#FF2F5F46">
-        
+
         <!-- Formulaire -->
         <TextBox x:Name="txtBxIntitule" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Intitule" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtBxDuree" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Durée (en heures)" VerticalAlignment="Top" Width="120"/>
-        
+        <Slider x:Name="sldrDuree" HorizontalAlignment="Left" Margin="108,39,0,0" VerticalAlignment="Top" Width="297" SmallChange="1" Maximum="72" ValueChanged="sldrDuree_ValueChanged"/>
+        <Label x:Name="lblDuree" Content="{Binding UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="93" Height="23"/>
+
         <!-- Boutons de contrôles -->
         <Button x:Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,66,0,0" Click="btnAjouter_Click"/>
         <Button x:Name="btnRetirer" Content="Retirer" HorizontalAlignment="Left" Margin="90,66,0,0" VerticalAlignment="Top" Width="75" Click="btnRetirer_Click"/>
         <Button x:Name="btnEditer" Content="Editer" HorizontalAlignment="Left" Margin="170,66,0,0" VerticalAlignment="Top" Width="75" Click="btnEditer_Click"/>
         <Button x:Name="btnSerialiser" Content="Serialiser" HorizontalAlignment="Left" Margin="250,66,0,0" VerticalAlignment="Top" Width="75" Click="btnSerialiser_Click"/>
         <Button x:Name="btnDeserialiser" Content="Deserialiser" HorizontalAlignment="Left" Margin="330,66,0,0" VerticalAlignment="Top" Width="75" Click="btnDeserialiser_Click"/>
+
+
 
         <Button x:Name="btnInfos" Content="Infos" HorizontalAlignment="Left" Margin="434,10,0,0" VerticalAlignment="Top" Width="75" Click="btnInfos_Click"/>
 

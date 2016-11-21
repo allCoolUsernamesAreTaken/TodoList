@@ -92,7 +92,9 @@ namespace TodoListV1.ClassesMetier
         {
             get
             {
-                return _duree.ToString();
+                char[] toTrim1 = {'0'};
+                char[] toTrim2 = { ':' };
+                return _duree.ToString().TrimEnd(toTrim1).TrimEnd(toTrim2);
             }
 
             set
@@ -128,11 +130,23 @@ namespace TodoListV1.ClassesMetier
         // CONSTRUCTEURS
         public Tache() : base() { }
 
-        public Tache(string itl, double dr, Statuts stt)
+        public Tache(string itl, double dr, Statuts stt) // Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
         {
             this.Intitule = itl;
 
             this.Duree = DoubleToTimeSpan(dr);
+
+            this.Statut = stt;
+            this.CreationTime = DateTime.UtcNow;
+            // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
+            System.Threading.Thread.Sleep(1);
+        }
+
+        public Tache(string itl, TimeSpan tmSpn, Statuts stt) // Constructeur avec TimeSpan
+        {
+            this.Intitule = itl;
+
+            this.Duree = tmSpn;
 
             this.Statut = stt;
             this.CreationTime = DateTime.UtcNow;
