@@ -77,14 +77,14 @@ namespace TodoListV1.ClassesControleur
         public static void MiseEnPlace()
         {
             // Initialisation de la liste de tâches
-            //ListeTachesPrincipale = new ListePrincipale();
-            //ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
-            //ListeTachesPrincipale.AjouterTache(new Tache("Jeux", 1.5, Statuts.aFaire));
-            //ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
-            //ListeTachesPrincipale.AjouterTache(new Tache("Courses", 0.5, Statuts.aFaire));
-            //ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.75, Statuts.aFaire));
+            ListeTachesPrincipale = new ListePrincipale();
+            ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
+            ListeTachesPrincipale.AjouterTache(new Tache("Jeux", 1.5, Statuts.aFaire));
+            ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
+            ListeTachesPrincipale.AjouterTache(new Tache("Courses", 0.5, Statuts.aFaire));
+            ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.75, Statuts.aFaire));
             // Chargement de la liste.
-            DeSerialiserListe();
+            //DeSerialiserListe();
 
 
             // Initialisation du dictionnaire de statuts

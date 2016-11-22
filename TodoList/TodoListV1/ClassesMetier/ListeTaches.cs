@@ -34,20 +34,7 @@ namespace TodoListV1.ClassesMetier
                 _listeDeTaches = value;
             }
         }
-        //[XmlAttribute()]
-        //public DateTime SauvegardeTime
-        //{
-        //    get
-        //    {
-        //        return _sauvegardeTime;
-        //    }
-
-        //    set
-        //    {
-        //        _sauvegardeTime = value;
-        //    }
-        //}
-
+        [XmlIgnore()]
         public TimeSpan TempsTotal
         {
             get
@@ -69,34 +56,34 @@ namespace TodoListV1.ClassesMetier
 
 
         // METHODES
-        public void AjouterTache(Tache tch)
+        public virtual void AjouterTache(Tache tch)
         {
             this.ListeDeTaches.Add(tch);
             MiseAJourTempsTotal();
         }
 
-        public void RetirerTache(Tache tch)
+        public virtual void RetirerTache(Tache tch)
         {
             this.ListeDeTaches.Remove(tch);
             MiseAJourTempsTotal();
         }
 
-        public void SupprimerTache(Tache tch)
+        public virtual void SupprimerTache(Tache tch)
         {
             tch.Dispose();
             MiseAJourTempsTotal();
         }
 
-        public void MiseAJourTache(Tache tch, Tache newTch)
+        public virtual void MiseAJourTache(Tache tch, Tache newTch)
         {
-            Tache majTch = this.ListeDeTaches.FirstOrDefault(t => t.Equals(tch));
+            Tache majTch = this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
             majTch.Intitule = newTch.Intitule;
             majTch.Duree = newTch.Duree;
             majTch.Statut = newTch.Statut;
             MiseAJourTempsTotal();
         }
 
-        public void MiseAJourTempsTotal()
+        public virtual void MiseAJourTempsTotal()
         {
             TempsTotal = new TimeSpan(0, 0, 0, 0);
             foreach (Tache item in ListeDeTaches)

@@ -17,7 +17,7 @@ namespace TodoListV1.ClassesMetier
         // ATTRIBUTS DE CLASSE
         private DateTime _sauvegardeTime;
         private ObservableCollection<Programme> _listeProgrammes;
-
+        private string _message;
 
         // GETTERS & SETTERS
         [XmlAttribute()]
@@ -33,7 +33,7 @@ namespace TodoListV1.ClassesMetier
                 _sauvegardeTime = value;
             }
         }
-
+        [XmlElement()]
         public ObservableCollection<Programme> ListeProgrammes
         {
             get
@@ -46,5 +46,74 @@ namespace TodoListV1.ClassesMetier
                 _listeProgrammes = value;
             }
         }
+        [XmlIgnore()]
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+
+            set
+            {
+                _message = value;
+            }
+        }
+
+
+        // METHODES
+        public override void RetirerTache(Tache tch)
+        {
+            if(this.ListeProgrammes != null)
+            {
+                foreach (Programme item in this.ListeProgrammes)
+                {
+                    item.RetirerTache(tch);
+                }
+            }
+            this.ListeDeTaches.Remove(tch);
+            MiseAJourTempsTotal();
+        }
+
+        // Méthodes de gestion de la liste des programmes
+        public bool ChercherProgramme(Programme prg)
+        {
+            if (this.ListeProgrammes != null && this.ListeProgrammes.Count() > 0)
+            {
+                foreach (Programme item in this.ListeProgrammes)
+                {
+                    if (prg.ComparerId(item))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        } // TODO : vérifier la pertinence de la vérification systématique.
+
+        public void AjouterProgramme(Programme prg)
+        {
+            if (this.ListeProgrammes == null)
+            {
+                this.ListeProgrammes = new ObservableCollection<Programme>();
+            }
+            if (this.ChercherProgramme(prg))
+            {
+                this.Message = "Le programme existe déjà";
+            }
+            else
+            {
+                this.ListeProgrammes.Add(prg);
+            }
+        }
+
+        public void RetirerProgramme(Programme prg)
+        {
+            if (this.ChercherProgramme(prg))
+            {
+                this.ListeProgrammes.Remove(prg);
+            }
+        }
+
     }
 }

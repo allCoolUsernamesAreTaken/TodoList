@@ -44,5 +44,15 @@ namespace TodoListV1.ClassesInterface
             return hrsMns;
         }
 
+        public static string CalculLabelDuree(int hrs, int mns)
+        {
+            string hrsStr;
+            string mnsStr;
+
+            hrsStr = (hrs < 10) ? "0" + hrs.ToString() : hrs.ToString();
+            mnsStr = (mns < 10) ? "0" + mns.ToString() : mns.ToString();
+
+            return "Durée : " + hrsStr + ":" + mnsStr;
+        }
     }
 }

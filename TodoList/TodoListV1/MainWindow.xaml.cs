@@ -24,46 +24,11 @@ namespace TodoListV1
     public partial class MainWindow : Window
     {
         // ATTRIBUTS DE CLASSE
-        private string _labelDuree;
         private int _heures;
         private int _minutes;
 
 
         // GETTERS & SETTERS
-        public string LabelDuree
-        {
-            get
-            {
-                string hrsStr;
-                string mnsStr;
-
-                if (this.Heures < 10)
-                {
-                    hrsStr = "0" + this.Heures.ToString();
-                }
-                else
-                {
-                    hrsStr = this.Heures.ToString();
-                }
-
-                if (this.Minutes < 10)
-                {
-                    mnsStr = "0" + this.Minutes.ToString();
-                }
-                else
-                {
-                    mnsStr = this.Minutes.ToString();
-                }
-
-                return "Durée : " + hrsStr + ":" + mnsStr;
-            }
-
-            set
-            {
-                _labelDuree = value;
-            }
-        }
-
         public int Heures
         {
             get
@@ -87,6 +52,15 @@ namespace TodoListV1
             set
             {
                 _minutes = value;
+            }
+        }
+
+        // Getters & setters spéciaux
+        public string LabelDuree
+        {
+            get
+            {
+                return MamaJane.CalculLabelDuree(this.Heures, this.Minutes);
             }
         }
 

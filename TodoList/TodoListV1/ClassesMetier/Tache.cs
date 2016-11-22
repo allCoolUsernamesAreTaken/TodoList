@@ -20,7 +20,7 @@ namespace TodoListV1.ClassesMetier
         private string _intitule;
         private TimeSpan _duree;
         private Statuts _statut;
-        private DateTime _creationTime;
+        private DateTime _dateCreation;
         
 
         // GETTERS & SETTERS
@@ -37,7 +37,7 @@ namespace TodoListV1.ClassesMetier
                 _intitule = value;
             }
         }
-
+        [XmlIgnore()]
         public TimeSpan Duree
         {
             get
@@ -64,16 +64,16 @@ namespace TodoListV1.ClassesMetier
             }
         }
         [XmlAttribute()]
-        public DateTime CreationTime
+        public DateTime DateCreation
         {
             get
             {
-                return _creationTime;
+                return _dateCreation;
             }
 
             set
             {
-                _creationTime = value;
+                _dateCreation = value;
             }
         }
 
@@ -109,10 +109,10 @@ namespace TodoListV1.ClassesMetier
         {
             get
             {
-                return _creationTime.ToString();
+                return _dateCreation.ToString();
             }
         }
-        [XmlElement()]
+        [XmlAttribute()]
         public string DureeXml // Un TimeSpan ne peut pas être serialisé tel quel. On passe donc par un string.
         {
             get
@@ -128,7 +128,11 @@ namespace TodoListV1.ClassesMetier
 
 
         // CONSTRUCTEURS
-        public Tache() : base() { }
+        public Tache() : base() {
+            this.DateCreation = DateTime.UtcNow;
+            // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
+            System.Threading.Thread.Sleep(1);
+        }
 
         public Tache(string itl, double dr, Statuts stt) // Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
         {
@@ -137,7 +141,7 @@ namespace TodoListV1.ClassesMetier
             this.Duree = DoubleToTimeSpan(dr);
 
             this.Statut = stt;
-            this.CreationTime = DateTime.UtcNow;
+            this.DateCreation = DateTime.UtcNow;
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
@@ -149,20 +153,20 @@ namespace TodoListV1.ClassesMetier
             this.Duree = tmSpn;
 
             this.Statut = stt;
-            this.CreationTime = DateTime.UtcNow;
+            this.DateCreation = DateTime.UtcNow;
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
 
 
         // METHODES
-        public override bool Equals(object obj)
+        public bool ComparerId(object obj)  // ComparerId vérifie si les deux objets ont le même identifiant, donc sont sensés être les mêmes.
         {
             bool result = false;
             if (obj.GetType() == this.GetType())
             {
                 if (
-                    ((Tache)obj).CreationTime.Equals(this.CreationTime)
+                    ((Tache)obj).DateCreation.Equals(this.DateCreation)
                     )
                 result = true;
             }
