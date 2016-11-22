@@ -18,13 +18,13 @@ namespace TodoListV1.ClassesControleur
     static class PapaJoe
     {
         // ATTRIBUTS DE CLASSE
-        private static ListeTaches _listeTachesPrincipale; // Liste de taches principale
+        private static ListePrincipale _listeTachesPrincipale; // Liste de taches principale
         private static string _infos; // String d'informations pour tests
         private static List<KeyValuePair<Statuts, string>> _listeStatuts; // Dictionnaire statuts-strings pour binding
 
 
         // GETTERS & SETTERS
-        public static ListeTaches ListeTachesPrincipale
+        public static ListePrincipale ListeTachesPrincipale
         {
             get
             {
@@ -44,7 +44,7 @@ namespace TodoListV1.ClassesControleur
                 _infos = "";
                 if(ListeTachesPrincipale.SauvegardeTime != null)
                 {
-                    _infos += ListeTachesPrincipale.SauvegardeTime.ToString()+"\n";
+                    _infos += ListeTachesPrincipale.SauvegardeTime.ToString()+ " - temps total : " + ListeTachesPrincipale.TempsTotal.ToString() + "\n";
                 }
                 foreach (Tache item in ListeTachesPrincipale.ListeDeTaches)
                 {
@@ -77,12 +77,12 @@ namespace TodoListV1.ClassesControleur
         public static void MiseEnPlace()
         {
             // Initialisation de la liste de tâches
-            ListeTachesPrincipale = new ListeTaches();
+            //ListeTachesPrincipale = new ListePrincipale();
             //ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
             //ListeTachesPrincipale.AjouterTache(new Tache("Jeux", 1.5, Statuts.aFaire));
-            //ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.8, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
             //ListeTachesPrincipale.AjouterTache(new Tache("Courses", 0.5, Statuts.aFaire));
-            //ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.7, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.75, Statuts.aFaire));
             // Chargement de la liste.
             DeSerialiserListe();
 
@@ -127,7 +127,7 @@ namespace TodoListV1.ClassesControleur
             // Instanciation de la date de sauvegarde
             ListeTachesPrincipale.SauvegardeTime = DateTime.UtcNow;
             // Process de sérisalition et de sauvegarde
-            XmlSerializer serialiseur = new XmlSerializer(typeof(ListeTaches));
+            XmlSerializer serialiseur = new XmlSerializer(typeof(ListePrincipale));
             StreamWriter ecrivain = new StreamWriter("Text.xml", false);
             serialiseur.Serialize(ecrivain, ListeTachesPrincipale);
             ecrivain.Close();
@@ -135,10 +135,11 @@ namespace TodoListV1.ClassesControleur
 
         public static void DeSerialiserListe()
         {
-            XmlSerializer serialiseur = new XmlSerializer(typeof(ListeTaches));
+            XmlSerializer serialiseur = new XmlSerializer(typeof(ListePrincipale));
             StreamReader lecteur = new StreamReader("Text.xml");
-            ListeTachesPrincipale = (ListeTaches)serialiseur.Deserialize(lecteur);
+            ListeTachesPrincipale = (ListePrincipale)serialiseur.Deserialize(lecteur);
             lecteur.Close();
+            ListeTachesPrincipale.MiseAJourTempsTotal();
         }
 
     }

@@ -163,7 +163,7 @@ namespace TodoListV1.ClassesInterface
 
         private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int[] hrsMns = WindowSender.CalculDuree((int)this.sldrDuree.Value);
+            int[] hrsMns = MamaJane.CalculDuree((int)this.sldrDuree.Value);
             this.Heures = hrsMns[0];
             this.Minutes = hrsMns[1];
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.

@@ -153,37 +153,11 @@ namespace TodoListV1
         // Calcul des variables de durée
         private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int[] hrsMns = CalculDuree((int)this.sldrDuree.Value);
+            int[] hrsMns = MamaJane.CalculDuree((int)this.sldrDuree.Value);
             this.Heures = hrsMns[0];
             this.Minutes = hrsMns[1];
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
 
-        public int[] CalculDuree(int dr)
-        {
-            // Réglages de la granularité du slider
-            int[] hrsMns = {0,0};
-            if (dr < 12) // Granularité de 5 mn en-dessous d'une heure
-            {
-                hrsMns[0] = 0;
-                hrsMns[1] = dr * 5;
-            }
-            else if (dr >= 12 && dr < 24) // Passage à 15 mn entre 1 et 4h
-            {
-                hrsMns[0] = (int)(1 + (dr - 12) / 4);
-                hrsMns[1] = (int)(((dr - 12) % 4) * 15);
-            }
-            else if (dr >= 24 && dr < 32) // Passage à demi-heures entre 4 et 8h
-            {
-                hrsMns[0] = (int)(4 + (dr - 24) / 2);
-                hrsMns[1] = (int)(((dr - 24) % 2) * 30);
-            }
-            else // Passage à heures au-delà de 8h
-            {
-                hrsMns[0] = 8 + (dr - 32);
-                hrsMns[1] = 0;
-            }
-            return hrsMns;
-        }
     }
 }

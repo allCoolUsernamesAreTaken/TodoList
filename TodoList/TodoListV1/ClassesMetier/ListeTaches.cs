@@ -9,16 +9,16 @@ using System.Xml.Serialization;
 namespace TodoListV1.ClassesMetier
 {
     /// <summary>
-    /// ListeTache est un conteneur de Tâches avec un certain nombre de méthodes de traitement associées.
-    /// Actuellement sa seule utilité est de gérer la liste de taches, 
-    /// mais il permettra à terme de créer des programmes de tâches
+    /// ListeTache est le modèle abstrait de conteneur de Tâches avec un certain nombre de méthodes de traitement associées.
+    /// Elle sert de parent à la Liste principale et aux programmes.
     /// </summary>
     [Serializable]
-    public class ListeTaches
+    public abstract class ListeTaches
     {
         // ATTRIBUTS DE CLASSE
         private ObservableCollection<Tache> _listeDeTaches; // TODO : Vérifier s'il y a une collection plus appropriée
-        private DateTime _sauvegardeTime;
+        //private DateTime _sauvegardeTime;
+        private TimeSpan _tempsTotal;
 
         // GETTERS & SETTERS
         [XmlElement()]
@@ -34,17 +34,30 @@ namespace TodoListV1.ClassesMetier
                 _listeDeTaches = value;
             }
         }
-        [XmlAttribute()]
-        public DateTime SauvegardeTime
+        //[XmlAttribute()]
+        //public DateTime SauvegardeTime
+        //{
+        //    get
+        //    {
+        //        return _sauvegardeTime;
+        //    }
+
+        //    set
+        //    {
+        //        _sauvegardeTime = value;
+        //    }
+        //}
+
+        public TimeSpan TempsTotal
         {
             get
             {
-                return _sauvegardeTime;
+                return _tempsTotal;
             }
 
             set
             {
-                _sauvegardeTime = value;
+                _tempsTotal = value;
             }
         }
 
@@ -59,16 +72,19 @@ namespace TodoListV1.ClassesMetier
         public void AjouterTache(Tache tch)
         {
             this.ListeDeTaches.Add(tch);
+            MiseAJourTempsTotal();
         }
 
         public void RetirerTache(Tache tch)
         {
             this.ListeDeTaches.Remove(tch);
+            MiseAJourTempsTotal();
         }
 
         public void SupprimerTache(Tache tch)
         {
             tch.Dispose();
+            MiseAJourTempsTotal();
         }
 
         public void MiseAJourTache(Tache tch, Tache newTch)
@@ -77,6 +93,16 @@ namespace TodoListV1.ClassesMetier
             majTch.Intitule = newTch.Intitule;
             majTch.Duree = newTch.Duree;
             majTch.Statut = newTch.Statut;
+            MiseAJourTempsTotal();
+        }
+
+        public void MiseAJourTempsTotal()
+        {
+            TempsTotal = new TimeSpan(0, 0, 0, 0);
+            foreach (Tache item in ListeDeTaches)
+            {
+                TempsTotal = TempsTotal.Add(item.Duree);
+            }
         }
     }
 }

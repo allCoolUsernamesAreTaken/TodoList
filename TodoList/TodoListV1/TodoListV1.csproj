@@ -72,7 +72,10 @@
     <Compile Include="ClassesInterface\FenetreEditerTache.xaml.cs">
       <DependentUpon>FenetreEditerTache.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassesInterface\MamaJane.cs" />
+    <Compile Include="ClassesMetier\ListePrincipale.cs" />
     <Compile Include="ClassesMetier\ListeTaches.cs" />
+    <Compile Include="ClassesMetier\Programme.cs" />
     <Compile Include="ClassesMetier\Statuts.cs" />
     <Compile Include="ClassesMetier\Tache.cs" />
     <Compile Include="MainWindow.xaml.cs">
