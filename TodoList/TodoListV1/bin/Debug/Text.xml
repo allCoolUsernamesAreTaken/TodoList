@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListePrincipale xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-11-22T15:10:46.4730554Z">
+<ListePrincipale xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-11-27T17:35:42.5097897Z">
   <ListeDeTaches Intitule="Ménage" Statut="aFaire" DateCreation="2016-11-22T15:10:38.9022001Z" DureeXml="PT2H" />
   <ListeDeTaches Intitule="Jeux" Statut="aFaire" DateCreation="2016-11-22T15:10:38.9042018Z" DureeXml="PT1H30M" />
   <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-22T15:10:38.9062023Z" DureeXml="PT3H45M" />
   <ListeDeTaches Intitule="Courses" Statut="aFaire" DateCreation="2016-11-22T15:10:38.9082036Z" DureeXml="PT30M" />
   <ListeDeTaches Intitule="Danse" Statut="aFaire" DateCreation="2016-11-22T15:10:38.9102066Z" DureeXml="PT2H45M" />
-  <TempsTotal />
-  <ListeProgrammes />
+  <ListeProgrammes Intitule="Boulot" DateCreation="2016-11-27T17:35:35.9142554Z" DureeMaxXml="PT0S" />
+  <ListeProgrammes Intitule="Loisirs" DateCreation="2016-11-27T17:35:35.9167551Z" DureeMaxXml="PT0S" />
+  <ListeProgrammes Intitule="Administratif" DateCreation="2016-11-27T17:35:35.9187556Z" DureeMaxXml="PT0S" />
 </ListePrincipale>

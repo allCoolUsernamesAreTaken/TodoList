@@ -1,0 +1,25 @@
+﻿<Window x:Class="TodoListV1.ClassesInterface.FenetreProgrammes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoListV1.ClassesInterface"
+        mc:Ignorable="d"
+        Title="FenetreProgrammes" Height="300" Width="446.667">
+    <Grid Background="#FF4A8CD2">
+
+
+        <!-- Listview bindée sur la liste de programmes -->
+        <ListView x:Name="lstVwListeProgrammes" ItemsSource="{Binding Path=ListeProgrammes, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="159" Margin="10,102,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.517,0.702" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="clmnIntitule" DisplayMemberBinding="{Binding Path=Intitule}" Header="Intitulé" Width="100"/>
+                    <GridViewColumn x:Name="clmnDureeTotale" DisplayMemberBinding="{Binding Path=DureeString}" Header="Durée Totale" Width="100"/>
+                    <GridViewColumn x:Name="clmnDureemax" DisplayMemberBinding="{Binding Path=StatutString}" Header="Durée Max" Width="100"/>
+                    <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=DateCreationString}" Header="Date de création" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

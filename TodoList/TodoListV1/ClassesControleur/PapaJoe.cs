@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Serialization;
 using TodoListV1.ClassesMetier;
 
@@ -50,6 +51,10 @@ namespace TodoListV1.ClassesControleur
                 {
                     _infos += item.ToString() + "\n";
                 }
+                foreach (Programme item in ListeTachesPrincipale.ListeProgrammes)
+                {
+                    _infos += item.ToString() + "\n";
+                }
                 return _infos;
             }
 
@@ -78,14 +83,19 @@ namespace TodoListV1.ClassesControleur
         {
             // Initialisation de la liste de tâches
             ListeTachesPrincipale = new ListePrincipale();
-            ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
-            ListeTachesPrincipale.AjouterTache(new Tache("Jeux", 1.5, Statuts.aFaire));
-            ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
-            ListeTachesPrincipale.AjouterTache(new Tache("Courses", 0.5, Statuts.aFaire));
-            ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.75, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Jeux", 1.5, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Courses", 0.5, Statuts.aFaire));
+            //ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.75, Statuts.aFaire));
             // Chargement de la liste.
-            //DeSerialiserListe();
+            DeSerialiserListe();
 
+            //Initialisation de la liste de programmes
+            //ListeTachesPrincipale.AjouterProgramme(new Programme("Boulot"));
+            //ListeTachesPrincipale.AjouterProgramme(new Programme("Loisirs"));
+            //ListeTachesPrincipale.AjouterProgramme(new Programme("Administratif"));
+            
 
             // Initialisation du dictionnaire de statuts
             ListeStatuts = new List<KeyValuePair<Statuts, string>>();

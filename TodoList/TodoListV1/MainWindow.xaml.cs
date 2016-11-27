@@ -101,8 +101,7 @@ namespace TodoListV1
         {
             foreach (Tache item in this.lstVwListeTaches.SelectedItems)
             {
-                FenetreEditerTache fntrEdTch = new FenetreEditerTache(this, item);
-                fntrEdTch.Show();
+                new FenetreEditerTache(this, item).Show();
             }
         }
         
@@ -133,5 +132,9 @@ namespace TodoListV1
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
 
+        private void btnProgrammes_Click(object sender, RoutedEventArgs e)
+        {
+            new FenetreProgrammes().Show();
+        }
     }
 }

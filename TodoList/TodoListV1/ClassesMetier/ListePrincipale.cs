@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace TodoListV1.ClassesMetier
 {
     /// <summary>
-    /// liste de tâche regroupant l'ensemble des tâches d'un utilisateur, et les champs nécessaires à sa gestion.
+    /// liste de tâche regroupant l'ensemble des tâches et des progammes d'un utilisateur, et les champs nécessaires à sa gestion.
     /// </summary>
     [Serializable]
     public class ListePrincipale : ListeTaches
@@ -97,12 +97,14 @@ namespace TodoListV1.ClassesMetier
             {
                 this.ListeProgrammes = new ObservableCollection<Programme>();
             }
+
             if (this.ChercherProgramme(prg))
             {
                 this.Message = "Le programme existe déjà";
             }
             else
             {
+                this.Message = "Le programme va être ajouté";
                 this.ListeProgrammes.Add(prg);
             }
         }

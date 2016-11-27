@@ -75,6 +75,14 @@ namespace TodoListV1.ClassesMetier
                 _dureeMax = string.IsNullOrEmpty(value) ? TimeSpan.Zero : XmlConvert.ToTimeSpan(value);
             }
         }
+        [XmlIgnore()]
+        public string DateCreationString
+        {
+            get
+            {
+                return _dateCreation.ToString();
+            }
+        }
 
 
         //CONSTRUCTEURS
@@ -82,6 +90,7 @@ namespace TodoListV1.ClassesMetier
 
         public Programme(string itl)
         {
+            this.Intitule = itl;
             this.DateCreation = DateTime.UtcNow;
             this.DureeMax = new TimeSpan(0, 0, 0, 0);
             // Le Thread.Sleep permet d'empêcher que deux programmes puissent être créées à la même milliseconde.
@@ -103,6 +112,10 @@ namespace TodoListV1.ClassesMetier
             return result;
         }
 
+        public override string ToString()
+        {
+            return this.Intitule + " " + this.DureeMax.ToString();
+        }
 
     }
 }

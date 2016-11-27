@@ -105,7 +105,7 @@ namespace TodoListV1.ClassesMetier
 
         }
         [XmlIgnore()]
-        public string CreationTimeString
+        public string DateCreationString
         {
             get
             {
@@ -178,7 +178,7 @@ namespace TodoListV1.ClassesMetier
             return this.Intitule 
                 + " " + this.Duree.ToString() + "h" 
                 + " " + StatutsMethodes.StatutsToString(this.Statut)
-                +" " + this.CreationTimeString;
+                +" " + this.DateCreationString;
         }
 
         public void Dispose()

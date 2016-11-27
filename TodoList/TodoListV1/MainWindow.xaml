@@ -19,11 +19,8 @@
         <Button x:Name="btnEditer" Content="Editer" HorizontalAlignment="Left" Margin="170,66,0,0" VerticalAlignment="Top" Width="75" Click="btnEditer_Click"/>
         <Button x:Name="btnSerialiser" Content="Serialiser" HorizontalAlignment="Left" Margin="250,66,0,0" VerticalAlignment="Top" Width="75" Click="btnSerialiser_Click"/>
         <Button x:Name="btnDeserialiser" Content="Deserialiser" HorizontalAlignment="Left" Margin="330,66,0,0" VerticalAlignment="Top" Width="75" Click="btnDeserialiser_Click"/>
-
-
-
+        <Button x:Name="btnProgrammes" Content="Programmes" HorizontalAlignment="Left" Margin="354,10,0,0" VerticalAlignment="Top" Width="75" Click="btnProgrammes_Click"/>
         <Button x:Name="btnInfos" Content="Infos" HorizontalAlignment="Left" Margin="434,10,0,0" VerticalAlignment="Top" Width="75" Click="btnInfos_Click"/>
-
 
         <!-- Listview bindée sur la MainListeTaches -->
         <ListView x:Name="lstVwListeTaches" ItemsSource="{Binding Path=ListeDeTaches, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="209" Margin="10,102,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.517,0.702" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -32,7 +29,7 @@
                     <GridViewColumn x:Name="clmnIntitule" DisplayMemberBinding="{Binding Path=Intitule}" Header="Intitulé" Width="100"/>
                     <GridViewColumn x:Name="clmnDuree" DisplayMemberBinding="{Binding Path=DureeString}" Header="Durée" Width="100"/>
                     <GridViewColumn x:Name="clmnStatut" DisplayMemberBinding="{Binding Path=StatutString}" Header="Statut" Width="100"/>
-                    <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=CreationTimeString}" Header="Date de création" Width="200"/>
+                    <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=DateCreationString}" Header="Date de création" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>
