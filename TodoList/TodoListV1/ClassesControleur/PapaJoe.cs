@@ -45,7 +45,7 @@ namespace TodoListV1.ClassesControleur
                 _infos = "";
                 if(ListeTachesPrincipale.SauvegardeTime != null)
                 {
-                    _infos += ListeTachesPrincipale.SauvegardeTime.ToString()+ " - temps total : " + ListeTachesPrincipale.TempsTotal.ToString() + "\n";
+                    _infos += ListeTachesPrincipale.SauvegardeTime.ToString()+ " - temps total : " + ListeTachesPrincipale.DureeTotale.ToString() + "\n";
                 }
                 foreach (Tache item in ListeTachesPrincipale.ListeDeTaches)
                 {
@@ -82,7 +82,7 @@ namespace TodoListV1.ClassesControleur
         public static void MiseEnPlace()
         {
             // Initialisation de la liste de tâches
-            ListeTachesPrincipale = new ListePrincipale();
+            //ListeTachesPrincipale = new ListePrincipale();
             //ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
             //ListeTachesPrincipale.AjouterTache(new Tache("Jeux", 1.5, Statuts.aFaire));
             //ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
@@ -92,10 +92,10 @@ namespace TodoListV1.ClassesControleur
             DeSerialiserListe();
 
             //Initialisation de la liste de programmes
-            //ListeTachesPrincipale.AjouterProgramme(new Programme("Boulot"));
-            //ListeTachesPrincipale.AjouterProgramme(new Programme("Loisirs"));
-            //ListeTachesPrincipale.AjouterProgramme(new Programme("Administratif"));
-            
+            //ListeTachesPrincipale.AjouterProgramme(new Programme("Boulot", new TimeSpan(0, 3, 45, 0)));
+            //ListeTachesPrincipale.AjouterProgramme(new Programme("Loisirs", new TimeSpan(0, 2, 15, 0)));
+            //ListeTachesPrincipale.AjouterProgramme(new Programme("Administratif", new TimeSpan(0, 0, 30, 0)));
+
 
             // Initialisation du dictionnaire de statuts
             ListeStatuts = new List<KeyValuePair<Statuts, string>>();

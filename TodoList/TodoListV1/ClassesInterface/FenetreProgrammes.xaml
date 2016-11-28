@@ -8,14 +8,23 @@
         Title="FenetreProgrammes" Height="300" Width="446.667">
     <Grid Background="#FF4A8CD2">
 
+        <!-- Formulaire -->
+        <TextBox x:Name="txtBxIntitule" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Intitule" VerticalAlignment="Top" Width="120"/>
+        <Slider x:Name="sldrDuree" HorizontalAlignment="Left" Margin="108,39,0,0" VerticalAlignment="Top" Width="297" SmallChange="1" Maximum="72" ValueChanged="sldrDuree_ValueChanged"/>
+        <Label x:Name="lblDuree" Content="{Binding UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="93" Height="23"/>
+
+        <!-- Boutons de contrôles -->
+        <Button x:Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,66,0,0" Click="btnAjouter_Click"/>
+        <Button x:Name="btnRetirer" Content="Retirer" HorizontalAlignment="Left" Margin="90,66,0,0" VerticalAlignment="Top" Width="75" Click="btnRetirer_Click"/>
+        <Button x:Name="btnEditer" Content="Editer" HorizontalAlignment="Left" Margin="170,66,0,0" VerticalAlignment="Top" Width="75" Click="btnEditer_Click"/>
 
         <!-- Listview bindée sur la liste de programmes -->
         <ListView x:Name="lstVwListeProgrammes" ItemsSource="{Binding Path=ListeProgrammes, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="159" Margin="10,102,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.517,0.702" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="clmnIntitule" DisplayMemberBinding="{Binding Path=Intitule}" Header="Intitulé" Width="100"/>
-                    <GridViewColumn x:Name="clmnDureeTotale" DisplayMemberBinding="{Binding Path=DureeString}" Header="Durée Totale" Width="100"/>
-                    <GridViewColumn x:Name="clmnDureemax" DisplayMemberBinding="{Binding Path=StatutString}" Header="Durée Max" Width="100"/>
+                    <GridViewColumn x:Name="clmnDureeTotale" DisplayMemberBinding="{Binding Path=DureeTotale}" Header="Durée Totale" Width="100"/>
+                    <GridViewColumn x:Name="clmnDureemax" DisplayMemberBinding="{Binding Path=DureeMax}" Header="Durée Max" Width="100"/>
                     <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=DateCreationString}" Header="Date de création" Width="100"/>
                 </GridView>
             </ListView.View>

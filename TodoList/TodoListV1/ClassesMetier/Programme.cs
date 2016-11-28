@@ -88,11 +88,11 @@ namespace TodoListV1.ClassesMetier
         //CONSTRUCTEURS
         public Programme() : base() {}
 
-        public Programme(string itl)
+        public Programme(string itl, TimeSpan drmx)
         {
             this.Intitule = itl;
             this.DateCreation = DateTime.UtcNow;
-            this.DureeMax = new TimeSpan(0, 0, 0, 0);
+            this.DureeMax = drmx;
             // Le Thread.Sleep permet d'empêcher que deux programmes puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }

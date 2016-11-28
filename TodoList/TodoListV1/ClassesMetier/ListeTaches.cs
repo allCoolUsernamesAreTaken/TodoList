@@ -18,7 +18,7 @@ namespace TodoListV1.ClassesMetier
         // ATTRIBUTS DE CLASSE
         private ObservableCollection<Tache> _listeDeTaches; // TODO : Vérifier s'il y a une collection plus appropriée
         //private DateTime _sauvegardeTime;
-        private TimeSpan _tempsTotal;
+        private TimeSpan _dureeTotale;
 
         // GETTERS & SETTERS
         [XmlElement()]
@@ -35,16 +35,16 @@ namespace TodoListV1.ClassesMetier
             }
         }
         [XmlIgnore()]
-        public TimeSpan TempsTotal
+        public TimeSpan DureeTotale
         {
             get
             {
-                return _tempsTotal;
+                return _dureeTotale;
             }
 
             set
             {
-                _tempsTotal = value;
+                _dureeTotale = value;
             }
         }
 
@@ -85,10 +85,10 @@ namespace TodoListV1.ClassesMetier
 
         public virtual void MiseAJourTempsTotal()
         {
-            TempsTotal = new TimeSpan(0, 0, 0, 0);
+            DureeTotale = new TimeSpan(0, 0, 0, 0);
             foreach (Tache item in ListeDeTaches)
             {
-                TempsTotal = TempsTotal.Add(item.Duree);
+                DureeTotale = DureeTotale.Add(item.Duree);
             }
         }
     }
