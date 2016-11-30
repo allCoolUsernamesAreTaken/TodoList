@@ -10,8 +10,7 @@
 
         <!-- Formulaire et boutons de contrôle -->
         <TextBox x:Name="txtBxIntitule" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Path=Intitule, Mode=OneTime}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtBxDuree" HorizontalAlignment="Left" Height="23" Margin="162,10,0,0" TextWrapping="Wrap" Text="{Binding Path=DureeString, Mode=OneTime}" VerticalAlignment="Top" Width="120"/>
-
+        
         <Slider x:Name="sldrDuree" HorizontalAlignment="Left" Margin="108,39,0,0" VerticalAlignment="Top" Width="174" SmallChange="1" Maximum="72" ValueChanged="sldrDuree_ValueChanged"/>
         <Label x:Name="lblDuree" Content="{Binding UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="93" Height="23"/>
 

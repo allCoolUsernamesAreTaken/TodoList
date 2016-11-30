@@ -9,7 +9,8 @@ using System.Xml.Serialization;
 namespace TodoListV1.ClassesMetier
 {
     /// <summary>
-    /// liste de tâche regroupant l'ensemble des tâches et des progammes d'un utilisateur, et les champs nécessaires à sa gestion.
+    /// liste de tâche regroupant l'ensemble des tâches et des progammes d'un utilisateur, 
+    /// et les champs nécessaires à sa gestion.
     /// </summary>
     [Serializable]
     public class ListePrincipale : ListeTaches
@@ -115,6 +116,13 @@ namespace TodoListV1.ClassesMetier
             {
                 this.ListeProgrammes.Remove(prg);
             }
+        }
+
+        public void MiseAJourProgramme(Programme prg, Programme newPrg)
+        {
+            Programme majPrg = this.ListeProgrammes.FirstOrDefault(p => p.ComparerId(prg));
+            majPrg.Intitule = newPrg.Intitule;
+            majPrg.DureeMax = newPrg.DureeMax;
         }
 
     }

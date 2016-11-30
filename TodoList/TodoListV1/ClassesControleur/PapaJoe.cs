@@ -88,14 +88,14 @@ namespace TodoListV1.ClassesControleur
             //ListeTachesPrincipale.AjouterTache(new Tache("Travail", 3.75, Statuts.aFaire));
             //ListeTachesPrincipale.AjouterTache(new Tache("Courses", 0.5, Statuts.aFaire));
             //ListeTachesPrincipale.AjouterTache(new Tache("Danse", 2.75, Statuts.aFaire));
-            // Chargement de la liste.
-            DeSerialiserListe();
 
             //Initialisation de la liste de programmes
             //ListeTachesPrincipale.AjouterProgramme(new Programme("Boulot", new TimeSpan(0, 3, 45, 0)));
             //ListeTachesPrincipale.AjouterProgramme(new Programme("Loisirs", new TimeSpan(0, 2, 15, 0)));
             //ListeTachesPrincipale.AjouterProgramme(new Programme("Administratif", new TimeSpan(0, 0, 30, 0)));
 
+            // Chargement de la liste.
+            DeSerialiserListe();
 
             // Initialisation du dictionnaire de statuts
             ListeStatuts = new List<KeyValuePair<Statuts, string>>();
@@ -130,6 +130,30 @@ namespace TodoListV1.ClassesControleur
         {
             ListeTachesPrincipale.MiseAJourTache(oldTch, newTch);
         }
+
+        public static void AjouterProgramme(string itl, TimeSpan dr)
+        {
+            ListeTachesPrincipale.AjouterProgramme(new Programme(itl, dr));
+        }
+
+        public static void RetirerProgrammes(System.Collections.IList lstPrg)
+        {
+            List<Programme> tmpLstPrg = new List<Programme>();
+            foreach (Programme item in lstPrg)
+            {
+                tmpLstPrg.Add(item);
+            }
+            foreach (Programme item in tmpLstPrg)
+            {
+                ListeTachesPrincipale.RetirerProgramme(item);
+            }
+        }
+
+        public static void MiseAJourProgramme(Programme oldPrg, Programme newPrg)
+        {
+            ListeTachesPrincipale.MiseAJourProgramme(oldPrg, newPrg);
+        }
+
 
         // Sauvegarde et chargement XML
         public static void SerialiserListe()

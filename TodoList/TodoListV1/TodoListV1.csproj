@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ClassesInterface\FenetreEditerProgramme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClassesInterface\FenetreEditerTache.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -73,6 +77,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ClassesControleur\PapaJoe.cs" />
+    <Compile Include="ClassesInterface\FenetreEditerProgramme.xaml.cs">
+      <DependentUpon>FenetreEditerProgramme.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassesInterface\FenetreEditerTache.xaml.cs">
       <DependentUpon>FenetreEditerTache.xaml</DependentUpon>
     </Compile>

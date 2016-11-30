@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TodoListV1.ClassesControleur;
+using TodoListV1.ClassesMetier;
 
 namespace TodoListV1.ClassesInterface
 {
@@ -88,17 +89,20 @@ namespace TodoListV1.ClassesInterface
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            //TODO : méthode d'ajout
+            PapaJoe.AjouterProgramme(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
         }
 
         private void btnRetirer_Click(object sender, RoutedEventArgs e)
         {
-            //TODO : méthode de retrait
+            PapaJoe.RetirerProgrammes(this.lstVwListeProgrammes.SelectedItems);
         }
 
         private void btnEditer_Click(object sender, RoutedEventArgs e)
         {
-            //TODO : méthode d'édition
+            foreach (Programme item in this.lstVwListeProgrammes.SelectedItems)
+            {
+                new FenetreEditerProgramme(this, item).Show();
+            }
         }
     }
 }
