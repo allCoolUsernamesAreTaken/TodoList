@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListePrincipale xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-11-28T21:00:49.8002547Z">
+<ListePrincipale xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2016-12-25T18:43:24.2436884Z">
   <ListeDeTaches Intitule="Ménage" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6321502Z" DureeXml="PT2H" />
   <ListeDeTaches Intitule="Jeux" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6351524Z" DureeXml="PT1H30M" />
   <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6371528Z" DureeXml="PT3H45M" />
-  <ListeDeTaches Intitule="Courses" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6391543Z" DureeXml="PT30M" />
   <ListeDeTaches Intitule="Danse" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6411557Z" DureeXml="PT2H45M" />
-  <ListeProgrammes Intitule="Boulot" DateCreation="2016-11-28T21:00:46.6431599Z" DureeMaxXml="PT3H45M" />
-  <ListeProgrammes Intitule="Loisirs" DateCreation="2016-11-28T21:00:46.6461602Z" DureeMaxXml="PT2H15M" />
-  <ListeProgrammes Intitule="Administratif" DateCreation="2016-11-28T21:00:46.6481635Z" DureeMaxXml="PT30M" />
+  <ListeDeTaches Intitule="Courses" Statut="aFaire" DateCreation="2016-12-25T18:42:39.9001226Z" DureeXml="PT1H" />
+  <ListeProgrammes Intitule="Boulot" DateCreation="2016-11-28T21:00:46.6431599Z" DureeMaxXml="PT3H45M">
+    <ListeDeTaches Intitule="Ménage" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6321502Z" DureeXml="PT2H" />
+    <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6371528Z" DureeXml="PT3H45M" />
+  </ListeProgrammes>
+  <ListeProgrammes Intitule="Loisirs" DateCreation="2016-11-28T21:00:46.6461602Z" DureeMaxXml="PT2H15M">
+    <ListeDeTaches Intitule="Jeux" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6351524Z" DureeXml="PT1H30M" />
+    <ListeDeTaches Intitule="Danse" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6411557Z" DureeXml="PT2H45M" />
+  </ListeProgrammes>
+  <ListeProgrammes Intitule="Quotidien" DateCreation="2016-11-28T21:00:46.6481635Z" DureeMaxXml="PT30M">
+    <ListeDeTaches Intitule="Ménage" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6321502Z" DureeXml="PT2H" />
+    <ListeDeTaches Intitule="Courses" Statut="aFaire" DateCreation="2016-12-25T18:42:39.9001226Z" DureeXml="PT1H" />
+  </ListeProgrammes>
 </ListePrincipale>

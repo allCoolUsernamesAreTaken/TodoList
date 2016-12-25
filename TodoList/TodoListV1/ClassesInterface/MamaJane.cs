@@ -12,6 +12,7 @@ namespace TodoListV1.ClassesInterface
     /// </summary>
     public static class MamaJane
     {
+        
         /// <summary>
         /// Sert à obtenir des nombres ronds et simplifiés d'heures et de minutes correspondants à un entier donné.
         /// </summary>

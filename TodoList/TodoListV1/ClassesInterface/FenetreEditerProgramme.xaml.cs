@@ -145,5 +145,18 @@ namespace TodoListV1.ClassesInterface
             this.Minutes = hrsMns[1];
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
+
+        private void btnAjouterTache_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Tache tch in this.lstVwListeTaches.SelectedItems)
+            {
+                PapaJoe.AjouterTache(tch, this.ProgrammeTraite);
+            }
+        }
+
+        private void btnRetirerTache_Click(object sender, RoutedEventArgs e)
+        {
+            PapaJoe.RetirerTaches(this.lstVwTachesProgramme.SelectedItems, this.ProgrammeTraite);
+        }
     }
 }

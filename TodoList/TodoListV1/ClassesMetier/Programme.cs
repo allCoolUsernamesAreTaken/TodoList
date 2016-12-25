@@ -114,7 +114,12 @@ namespace TodoListV1.ClassesMetier
 
         public override string ToString()
         {
-            return this.Intitule + " " + this.DureeMax.ToString();
+            string str = this.Intitule + " " + this.DureeMax.ToString() + "\n";
+            foreach (Tache tch in this.ListeDeTaches)
+            {
+                str += tch.Intitule + "\n";
+            }
+            return str;
         }
 
     }

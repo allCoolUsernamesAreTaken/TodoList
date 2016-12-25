@@ -88,13 +88,12 @@ namespace TodoListV1
         // METHODES
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            PapaJoe.AjouterTache(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
+            PapaJoe.CreerTache(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
         }
 
         private void btnRetirer_Click(object sender, RoutedEventArgs e)
         {
-            // TODO : voir s'il est possible de modifier l'UpdateSourceTrigger le temps du foreach pour ne pas passer par une seconde liste.
-            PapaJoe.RetirerTaches(this.lstVwListeTaches.SelectedItems);
+            PapaJoe.RetirerTaches(this.lstVwListeTaches.SelectedItems, PapaJoe.ListeTachesPrincipale);
         }
 
         private void btnEditer_Click(object sender, RoutedEventArgs e)
@@ -132,6 +131,7 @@ namespace TodoListV1
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
 
+        // Affichage de la fenêtre des programmes
         private void btnProgrammes_Click(object sender, RoutedEventArgs e)
         {
             new FenetreProgrammes().Show();

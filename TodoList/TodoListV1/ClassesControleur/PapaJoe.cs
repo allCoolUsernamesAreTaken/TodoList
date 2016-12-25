@@ -16,7 +16,7 @@ namespace TodoListV1.ClassesControleur
     /// C'est une classe statique qui charge la liste de taches principale, 
     /// et gère les interactions entre l'interface et les classes métiers 
     /// </summary>
-    static class PapaJoe
+    public static class PapaJoe
     {
         // ATTRIBUTS DE CLASSE
         private static ListePrincipale _listeTachesPrincipale; // Liste de taches principale
@@ -51,6 +51,7 @@ namespace TodoListV1.ClassesControleur
                 {
                     _infos += item.ToString() + "\n";
                 }
+                _infos += "\n";
                 foreach (Programme item in ListeTachesPrincipale.ListeProgrammes)
                 {
                     _infos += item.ToString() + "\n";
@@ -96,6 +97,7 @@ namespace TodoListV1.ClassesControleur
 
             // Chargement de la liste.
             DeSerialiserListe();
+            DeDoublonnerTaches();
 
             // Initialisation du dictionnaire de statuts
             ListeStatuts = new List<KeyValuePair<Statuts, string>>();
@@ -108,12 +110,17 @@ namespace TodoListV1.ClassesControleur
 
         
         // METHODES
-        public static void AjouterTache(string itl, TimeSpan dr)
+        public static void CreerTache(string itl, TimeSpan dr)
         {
             ListeTachesPrincipale.AjouterTache(new Tache(itl, dr, Statuts.aFaire));
         }
 
-        public static void RetirerTaches(System.Collections.IList lstTch)
+        public static void AjouterTache(Tache tch, ListeTaches lstTchCible)
+        {
+            lstTchCible.AjouterTache(tch);
+        }
+
+        public static void RetirerTaches(System.Collections.IList lstTch, ListeTaches lstTchCible)
         {
             List<Tache> tmpLstTch = new List<Tache>();
             foreach (Tache item in lstTch)
@@ -122,7 +129,7 @@ namespace TodoListV1.ClassesControleur
             }
             foreach (Tache item in tmpLstTch)
             {
-                ListeTachesPrincipale.RetirerTache(item);
+                lstTchCible.RetirerTache(item);
             }
         }
 
@@ -174,6 +181,28 @@ namespace TodoListV1.ClassesControleur
             ListeTachesPrincipale = (ListePrincipale)serialiseur.Deserialize(lecteur);
             lecteur.Close();
             ListeTachesPrincipale.MiseAJourTempsTotal();
+        }
+
+        public static void DeDoublonnerTaches()
+        {
+            if (ListeTachesPrincipale.ListeProgrammes.Count > 0)
+            {
+                List <Tache[]> listeDePaires = new List<Tache[]>();
+                foreach (Programme prg in ListeTachesPrincipale.ListeProgrammes)
+                {
+                    for (int i = 0; i < prg.ListeDeTaches.Count; i++)
+                    {
+                        foreach(Tache mainTch in ListeTachesPrincipale.ListeDeTaches)
+                        {
+                            if (prg.ListeDeTaches[i].ComparerId(mainTch))
+                            {
+                                prg.ListeDeTaches[i] = mainTch;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }
