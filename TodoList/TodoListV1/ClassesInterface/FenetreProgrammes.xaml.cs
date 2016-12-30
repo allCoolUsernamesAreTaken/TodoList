@@ -62,12 +62,14 @@ namespace TodoListV1.ClassesInterface
         }
 
 
+        // CONSTRUCTEUR
         public FenetreProgrammes()
         {
             InitializeComponent();
             ReglagesManuels();
         }
 
+        // METHODES
         public void ReglagesManuels()
         {
             // Binding de la ListView

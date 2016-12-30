@@ -22,10 +22,10 @@
         <ListView x:Name="lstVwListeProgrammes" ItemsSource="{Binding Path=ListeProgrammes, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="159" Margin="10,102,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.517,0.702" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="clmnIntitule" DisplayMemberBinding="{Binding Path=Intitule}" Header="Intitulé" Width="100"/>
-                    <GridViewColumn x:Name="clmnDureeTotale" DisplayMemberBinding="{Binding Path=DureeTotale}" Header="Durée Totale" Width="100"/>
-                    <GridViewColumn x:Name="clmnDureemax" DisplayMemberBinding="{Binding Path=DureeMax}" Header="Durée Max" Width="100"/>
-                    <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=DateCreationString}" Header="Date de création" Width="100"/>
+                    <GridViewColumn x:Name="clmnIntitule" DisplayMemberBinding="{Binding Path=Intitule, UpdateSourceTrigger=PropertyChanged}" Header="Intitulé" Width="100"/>
+                    <GridViewColumn x:Name="clmnDureeTotale" DisplayMemberBinding="{Binding Path=DureeTotale, UpdateSourceTrigger=PropertyChanged}" Header="Durée Totale" Width="100"/>
+                    <GridViewColumn x:Name="clmnDureemax" DisplayMemberBinding="{Binding Path=DureeMax, UpdateSourceTrigger=PropertyChanged}" Header="Durée Max" Width="100"/>
+                    <GridViewColumn x:Name="clmnDateCreation" DisplayMemberBinding="{Binding Path=DateCreationString, UpdateSourceTrigger=PropertyChanged}" Header="Date de création" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

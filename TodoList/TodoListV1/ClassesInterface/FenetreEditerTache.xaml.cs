@@ -17,7 +17,7 @@ using TodoListV1.ClassesMetier;
 namespace TodoListV1.ClassesInterface
 {
     /// <summary>
-    /// Récupère lors de sa construction une Tâche à traiter et la window qui l'envoie. 
+    /// Récupère lors de sa construction une Tâche à traiter. 
     /// Permet la modification des valeurs de la Tâche.
     /// La touche "sauver" envoie à PapaJoe la Tâche avant modification, pour identification, 
     /// et la tâche après modification, pour remplacement
@@ -25,26 +25,12 @@ namespace TodoListV1.ClassesInterface
     public partial class FenetreEditerTache : Window
     {
         // ATTRIBUTS DE CLASSE
-        private MainWindow _windowSender;
         private Tache _tacheTraitee;
         private int _heures;
         private int _minutes;
 
 
         // GETTERS & SETTERS
-        public MainWindow WindowSender
-        {
-            get
-            {
-                return _windowSender;
-            }
-
-            set
-            {
-                _windowSender = value;
-            }
-        }
-
         public Tache TacheTraitee
         {
             get
@@ -99,7 +85,6 @@ namespace TodoListV1.ClassesInterface
         {
             InitializeComponent();
             // Récupération des données en local 
-            this.WindowSender = Wndw;
             this.TacheTraitee = tch;
             // Récupération des paramètres de timeSpan
             this.Heures = (int)this.TacheTraitee.Duree.Hours;
@@ -127,7 +112,6 @@ namespace TodoListV1.ClassesInterface
             if (ok)
             {
                 PapaJoe.MiseAJourTache(this.TacheTraitee, new Tache(itl, dr, stt));
-                this.WindowSender.lstVwListeTaches.Items.Refresh();
             }
             else
             {

@@ -32,6 +32,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _intitule = value;
+                OnPropertyChanged("Intitule");
             }
         }
         [XmlIgnore()]
@@ -45,6 +46,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _dureeMax = value;
+                OnPropertyChanged("DureeMax");
             }
         }
         [XmlAttribute()]

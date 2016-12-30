@@ -97,7 +97,7 @@ namespace TodoListV1.ClassesControleur
 
             // Chargement de la liste.
             DeSerialiserListe();
-            DeDoublonnerTaches();
+            InitialiserProgrammes();
 
             // Initialisation du dictionnaire de statuts
             ListeStatuts = new List<KeyValuePair<Statuts, string>>();
@@ -183,8 +183,9 @@ namespace TodoListV1.ClassesControleur
             ListeTachesPrincipale.MiseAJourTempsTotal();
         }
 
-        public static void DeDoublonnerTaches()
+        public static void InitialiserProgrammes()
         {
+            // Checke l'enesemble des tâches présentes dans les programmes, les dédoublonne, puis initialise les temps totaux
             if (ListeTachesPrincipale.ListeProgrammes.Count > 0)
             {
                 List <Tache[]> listeDePaires = new List<Tache[]>();
@@ -201,6 +202,7 @@ namespace TodoListV1.ClassesControleur
                             }
                         }
                     }
+                    prg.MiseAJourTempsTotal();
                 }
             }
         }

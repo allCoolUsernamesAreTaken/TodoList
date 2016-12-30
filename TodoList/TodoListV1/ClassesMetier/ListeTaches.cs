@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,12 @@ namespace TodoListV1.ClassesMetier
     /// Elle sert de parent à la Liste principale et aux programmes.
     /// </summary>
     [Serializable]
-    public abstract class ListeTaches
+    public abstract class ListeTaches : INotifyPropertyChanged
     {
         // ATTRIBUTS DE CLASSE
         private ObservableCollection<Tache> _listeDeTaches; // TODO : Vérifier s'il y a une collection plus appropriée
-        //private DateTime _sauvegardeTime;
         private TimeSpan _dureeTotale;
+        public event PropertyChangedEventHandler PropertyChanged; // Interface INotifyPropertyChanged
 
         // GETTERS & SETTERS
         [XmlElement()]
@@ -45,6 +46,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _dureeTotale = value;
+                OnPropertyChanged("DureeTotale");
             }
         }
 
@@ -76,10 +78,10 @@ namespace TodoListV1.ClassesMetier
 
         public virtual void MiseAJourTache(Tache tch, Tache newTch)
         {
-            Tache majTch = this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
-            majTch.Intitule = newTch.Intitule;
-            majTch.Duree = newTch.Duree;
-            majTch.Statut = newTch.Statut;
+            tch = this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
+            tch.Intitule = newTch.Intitule;
+            tch.Duree = newTch.Duree;
+            tch.Statut = newTch.Statut;
             MiseAJourTempsTotal();
         }
 
@@ -89,6 +91,15 @@ namespace TodoListV1.ClassesMetier
             foreach (Tache item in ListeDeTaches)
             {
                 DureeTotale = DureeTotale.Add(item.Duree);
+            }
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
             }
         }
     }

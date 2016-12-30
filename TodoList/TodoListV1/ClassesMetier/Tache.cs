@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,15 @@ namespace TodoListV1.ClassesMetier
     /// mais aussi des getters d'attributs traduits en string.
     /// </summary>
     [Serializable]
-    public class Tache : IDisposable
+    public class Tache : IDisposable, INotifyPropertyChanged
     {
         // ATTRIBUTS DE CLASSE
         private string _intitule;
         private TimeSpan _duree;
         private Statuts _statut;
         private DateTime _dateCreation;
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         // GETTERS & SETTERS
         [XmlAttribute()]
@@ -35,6 +37,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _intitule = value;
+                OnPropertyChanged("Intitule");
             }
         }
         [XmlIgnore()]
@@ -48,6 +51,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _duree = value;
+                OnPropertyChanged("DureeString");
             }
         }
         [XmlAttribute()]
@@ -61,6 +65,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _statut = value;
+                OnPropertyChanged("StatutString");
             }
         }
         [XmlAttribute()]
@@ -192,6 +197,16 @@ namespace TodoListV1.ClassesMetier
             int hrs = (int)(dbl % 24);
             int mns = (int)((dbl % 1) * 60);
             return new TimeSpan(dys, hrs, mns, 0);
+        }
+
+        // Méthode de l'interface INotifyPropertyChanged
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

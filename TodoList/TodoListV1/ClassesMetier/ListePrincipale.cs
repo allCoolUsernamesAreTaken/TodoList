@@ -66,21 +66,36 @@ namespace TodoListV1.ClassesMetier
         // METHODES
         public override void RetirerTache(Tache tch)
         {
-            if(this.ListeProgrammes.Count()>0)
+            base.RetirerTache(tch);
+
+            if(this.ListeProgrammes != null)
             {
                 foreach (Programme prg in this.ListeProgrammes)
                 {
                     prg.RetirerTache(tch);
                 }
             }
-            this.ListeDeTaches.Remove(tch);
-            MiseAJourTempsTotal();
+        }
+
+        public override void MiseAJourTache(Tache tch, Tache newTch)
+        {
+            base.MiseAJourTache(tch, newTch);
+            if(this.ListeProgrammes != null)
+            {
+                foreach (Programme prg in this.ListeProgrammes)
+                {
+                    if (prg.ListeDeTaches.Contains(tch))
+                    {
+                        prg.MiseAJourTempsTotal();
+                    }
+                }
+            }
         }
 
         // Méthodes de gestion de la liste des programmes
         public bool ChercherProgramme(Programme prg)
         {
-            if (this.ListeProgrammes != null && this.ListeProgrammes.Count() > 0)
+            if (this.ListeProgrammes != null)
             {
                 foreach (Programme item in this.ListeProgrammes)
                 {

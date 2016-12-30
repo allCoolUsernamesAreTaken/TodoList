@@ -26,26 +26,12 @@ namespace TodoListV1.ClassesInterface
     {
 
         // ATTRIBUTS DE CLASSE
-        private FenetreProgrammes _windowSender;
         private Programme _programmeTraite;
         private int _heures;
         private int _minutes;
 
 
         // GETTERS & SETTERS
-        public FenetreProgrammes WindowSender
-        {
-            get
-            {
-                return _windowSender;
-            }
-
-            set
-            {
-                _windowSender = value;
-            }
-        }
-
         public Programme ProgrammeTraite
         {
             get
@@ -102,7 +88,6 @@ namespace TodoListV1.ClassesInterface
             // Binding de la ListView
             this.lstVwListeTaches.DataContext = PapaJoe.ListeTachesPrincipale;
             // Récupération des données en local 
-            this.WindowSender = Wndw;
             this.ProgrammeTraite = prg;
             // Récupération des paramètres de timeSpan
             this.Heures = (int)this.ProgrammeTraite.DureeMax.Hours;
@@ -129,7 +114,6 @@ namespace TodoListV1.ClassesInterface
             if (ok)
             {
                 PapaJoe.MiseAJourProgramme(this.ProgrammeTraite, new Programme(itl, dr));
-                this.WindowSender.lstVwListeProgrammes.Items.Refresh();
             }
             else
             {
