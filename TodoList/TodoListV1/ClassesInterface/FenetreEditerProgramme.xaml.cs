@@ -126,7 +126,14 @@ namespace TodoListV1.ClassesInterface
         {
             foreach (Tache tch in this.lstVwListeTaches.SelectedItems)
             {
-                PapaJoe.AjouterTache(tch, this.ProgrammeTraite);
+                try
+                {
+                    PapaJoe.AjouterTache(tch, this.ProgrammeTraite);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception :\n"+ex.Message);
+                }
             }
         }
         private void btnRetirerTache_Click(object sender, RoutedEventArgs e)

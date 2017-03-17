@@ -92,6 +92,7 @@
     <Compile Include="ClassesMetier\Programme.cs" />
     <Compile Include="ClassesMetier\Statuts.cs" />
     <Compile Include="ClassesMetier\Tache.cs" />
+    <Compile Include="Exceptions\ListeTachesException.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

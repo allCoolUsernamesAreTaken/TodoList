@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using TodoListV1.Exceptions;
 
 namespace TodoListV1.ClassesMetier
 {
@@ -58,8 +59,15 @@ namespace TodoListV1.ClassesMetier
         // METHODES =========================
         public virtual void AjouterTache(Tache tch)
         {
-            this.ListeDeTaches.Add(tch);
-            MiseAJourTempsTotal();
+            if (!this.ContientTache(tch))
+            {
+                this.ListeDeTaches.Add(tch);
+                MiseAJourTempsTotal();
+            }
+            else
+            {
+                throw new ListeTachesException("La tâche est déjà présente dans la liste.");
+            }
         }
         public virtual void RetirerTache(Tache tch)
         {
@@ -73,7 +81,7 @@ namespace TodoListV1.ClassesMetier
         }
         public virtual void MiseAJourTache(Tache tch, Tache newTch)
         {
-            tch = this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
+            tch = this.RecupereTache(tch);
             tch.Intitule = newTch.Intitule;
             tch.Duree = newTch.Duree;
             tch.Statut = newTch.Statut;
@@ -86,6 +94,14 @@ namespace TodoListV1.ClassesMetier
             {
                 DureeTotale = DureeTotale.Add(item.Duree);
             }
+        }
+        public virtual bool ContientTache(Tache tch)
+        {
+            return RecupereTache(tch) != null;
+        }
+        public virtual Tache RecupereTache(Tache tch)
+        {
+            return this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
         }
         protected void OnPropertyChanged(string name)
         {
