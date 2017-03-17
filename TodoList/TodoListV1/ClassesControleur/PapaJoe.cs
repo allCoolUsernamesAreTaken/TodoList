@@ -108,7 +108,7 @@ namespace TodoListV1.ClassesControleur
         // METHODES =========================
         public static void CreerTache(string itl, TimeSpan dr)
         {
-            ListeTachesPrincipale.AjouterTache(new Tache(itl, dr, Statuts.aFaire));
+            ListeTachesPrincipale.AjouterTache(new Tache(itl, dr, Statuts.aFaire, ""));
         }
         public static void AjouterTache(Tache tch, ListeTaches lstTchCible)
         {

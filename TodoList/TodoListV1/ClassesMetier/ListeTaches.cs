@@ -85,6 +85,7 @@ namespace TodoListV1.ClassesMetier
             tch.Intitule = newTch.Intitule;
             tch.Duree = newTch.Duree;
             tch.Statut = newTch.Statut;
+            tch.Notes = newTch.Notes;
             MiseAJourTempsTotal();
         }
         public virtual void MiseAJourTempsTotal()

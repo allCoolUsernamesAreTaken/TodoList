@@ -103,11 +103,12 @@ namespace TodoListV1.ClassesInterface
             string itl = this.txtBxIntitule.Text;
             TimeSpan dr = new TimeSpan(0, this.Heures, this.Minutes, 0);
             Statuts stt = (Statuts)this.cmbBxStatut.SelectedValue;
+            string nts = this.txtBxNotes.Text;
 
             // Envoi des champs pour update ou Message d'erreur
             if (ok)
             {
-                PapaJoe.MiseAJourTache(this.TacheTraitee, new Tache(itl, dr, stt));
+                PapaJoe.MiseAJourTache(this.TacheTraitee, new Tache(itl, dr, stt, nts));
             }
             else
             {

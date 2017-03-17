@@ -93,6 +93,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _notes = value;
+                OnPropertyChanged("Notes");
             }
         }
 
@@ -151,24 +152,22 @@ namespace TodoListV1.ClassesMetier
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
-        public Tache(string itl, double dr, Statuts stt) // Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
+        public Tache(string itl, double dr, Statuts stt, string nts) // Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
         {
             this.Intitule = itl;
-
             this.Duree = DoubleToTimeSpan(dr);
-
             this.Statut = stt;
+            this.Notes = nts;
             this.DateCreation = DateTime.UtcNow;
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
-        public Tache(string itl, TimeSpan tmSpn, Statuts stt) // Constructeur avec TimeSpan
+        public Tache(string itl, TimeSpan tmSpn, Statuts stt, string nts) // Constructeur avec TimeSpan
         {
             this.Intitule = itl;
-
             this.Duree = tmSpn;
-
             this.Statut = stt;
+            this.Notes = nts;
             this.DateCreation = DateTime.UtcNow;
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
