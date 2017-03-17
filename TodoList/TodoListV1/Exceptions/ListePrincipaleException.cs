@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TodoListV1.Exceptions
 {
-    internal class ListeTachesException : Exception
+    internal class ListePrincipaleException : Exception
     {
-        public ListeTachesException(string msg) : base(msg) { }
+        public ListePrincipaleException(string msg) : base(msg) { }
     }
 }

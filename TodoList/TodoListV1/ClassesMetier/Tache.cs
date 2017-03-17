@@ -22,6 +22,7 @@ namespace TodoListV1.ClassesMetier
         private TimeSpan _duree;
         private Statuts _statut;
         private DateTime _dateCreation;
+        private string _notes;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -79,6 +80,19 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _dateCreation = value;
+            }
+        }
+        [XmlElement()]
+        public string Notes
+        {
+            get
+            {
+                return _notes;
+            }
+
+            set
+            {
+                _notes = value;
             }
         }
 

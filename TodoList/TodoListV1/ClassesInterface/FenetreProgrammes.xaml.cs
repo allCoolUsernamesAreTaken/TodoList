@@ -87,7 +87,14 @@ namespace TodoListV1.ClassesInterface
         }
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            PapaJoe.AjouterProgramme(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
+            try
+            {
+                PapaJoe.AjouterProgramme(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception :\n" + ex.Message);
+            }
         }
         private void btnRetirer_Click(object sender, RoutedEventArgs e)
         {

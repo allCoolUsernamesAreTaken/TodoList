@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Serialization;
+using TodoListV1.Exceptions;
 
 namespace TodoListV1.ClassesMetier
 {
@@ -72,6 +73,7 @@ namespace TodoListV1.ClassesMetier
                 foreach (Programme prg in this.ListeProgrammes)
                 {
                     prg.RetirerTache(tch);
+                    prg.MiseAJourTempsTotal();
                 }
             }
         }
@@ -91,16 +93,12 @@ namespace TodoListV1.ClassesMetier
         }
 
         // Méthodes de gestion de la liste des programmes
-        public bool ChercherProgramme(Programme prg)
+        public bool ContientProgramme(Programme prg)
         {
             if (this.ListeProgrammes != null)
             {
-                foreach (Programme item in this.ListeProgrammes)
-                {
-                    if (prg.ComparerId(item))
-                    {
-                        return true;
-                    }
+                if(this.RecupererProgramme(prg) != null) {
+                    return true;
                 }
             }
             return false;
@@ -112,9 +110,10 @@ namespace TodoListV1.ClassesMetier
                 this.ListeProgrammes = new ObservableCollection<Programme>();
             }
 
-            if (this.ChercherProgramme(prg))
+            if (this.ContientProgramme(prg))
             {
-                this.Message = "Le programme existe déjà";
+                // TODO : Exception
+                throw new ListePrincipaleException("Le programme existe déjà");
             }
             else
             {
@@ -124,16 +123,21 @@ namespace TodoListV1.ClassesMetier
         }
         public void RetirerProgramme(Programme prg)
         {
-            if (this.ChercherProgramme(prg))
+            if (this.ContientProgramme(prg))
             {
                 this.ListeProgrammes.Remove(prg);
             }
         }
         public void MiseAJourProgramme(Programme prg, Programme newPrg)
         {
-            Programme majPrg = this.ListeProgrammes.FirstOrDefault(p => p.ComparerId(prg));
+            Programme majPrg = this.RecupererProgramme(prg);
             majPrg.Intitule = newPrg.Intitule;
             majPrg.DureeMax = newPrg.DureeMax;
+        }
+
+        public Programme RecupererProgramme(Programme prg)
+        {
+            return this.ListeProgrammes.FirstOrDefault(p => p.ComparerId(prg));
         }
 
     }

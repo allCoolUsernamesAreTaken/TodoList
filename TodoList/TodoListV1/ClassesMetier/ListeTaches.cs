@@ -103,6 +103,8 @@ namespace TodoListV1.ClassesMetier
         {
             return this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
         }
+
+        // Méthode de l'interface INotifyPropertyChanged
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
