@@ -11,8 +11,7 @@ namespace TodoListV1.ClassesInterface
     /// Elle regroupe les méthodes et attributs communs aux différents éléments qui ne concernent pas la communication avec le modèle.
     /// </summary>
     public static class MamaJane
-    {
-        
+    {        
         /// <summary>
         /// Sert à obtenir des nombres ronds et simplifiés d'heures et de minutes correspondants à un entier donné.
         /// </summary>
@@ -44,7 +43,6 @@ namespace TodoListV1.ClassesInterface
             }
             return hrsMns;
         }
-
         public static string CalculLabelDuree(int hrs, int mns)
         {
             string hrsStr;

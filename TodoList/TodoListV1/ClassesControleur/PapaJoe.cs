@@ -18,13 +18,12 @@ namespace TodoListV1.ClassesControleur
     /// </summary>
     public static class PapaJoe
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private static ListePrincipale _listeTachesPrincipale; // Liste de taches principale
         private static string _infos; // String d'informations pour tests
         private static List<KeyValuePair<Statuts, string>> _listeStatuts; // Dictionnaire statuts-strings pour binding
 
-
-        // GETTERS & SETTERS
+        // GETTERS & SETTERS =========================
         public static ListePrincipale ListeTachesPrincipale
         {
             get
@@ -37,7 +36,6 @@ namespace TodoListV1.ClassesControleur
                 _listeTachesPrincipale = value;
             }
         }
-        
         public static string Infos
         {
             get
@@ -64,7 +62,6 @@ namespace TodoListV1.ClassesControleur
                 _infos = value;
             }
         }
-
         public static List<KeyValuePair<Statuts, string>> ListeStatuts
         {
             get
@@ -78,10 +75,10 @@ namespace TodoListV1.ClassesControleur
             }
         }
 
-
-        // MISE EN PLACE
+        // MISE EN PLACE =========================
         public static void MiseEnPlace()
         {
+            #region Initialisation manuelle
             // Initialisation de la liste de tâches
             //ListeTachesPrincipale = new ListePrincipale();
             //ListeTachesPrincipale.AjouterTache(new Tache("Ménage", 2, Statuts.aFaire));
@@ -94,6 +91,7 @@ namespace TodoListV1.ClassesControleur
             //ListeTachesPrincipale.AjouterProgramme(new Programme("Boulot", new TimeSpan(0, 3, 45, 0)));
             //ListeTachesPrincipale.AjouterProgramme(new Programme("Loisirs", new TimeSpan(0, 2, 15, 0)));
             //ListeTachesPrincipale.AjouterProgramme(new Programme("Administratif", new TimeSpan(0, 0, 30, 0)));
+            #endregion
 
             // Chargement de la liste.
             DeSerialiserListe();
@@ -105,21 +103,17 @@ namespace TodoListV1.ClassesControleur
             {
                 ListeStatuts.Add(new KeyValuePair<Statuts, string>(item, StatutsMethodes.StatutsToString(item)));
             }
-
         }
 
-        
-        // METHODES
+        // METHODES =========================
         public static void CreerTache(string itl, TimeSpan dr)
         {
             ListeTachesPrincipale.AjouterTache(new Tache(itl, dr, Statuts.aFaire));
         }
-
         public static void AjouterTache(Tache tch, ListeTaches lstTchCible)
         {
             lstTchCible.AjouterTache(tch);
         }
-
         public static void RetirerTaches(System.Collections.IList lstTch, ListeTaches lstTchCible)
         {
             List<Tache> tmpLstTch = new List<Tache>();
@@ -132,17 +126,14 @@ namespace TodoListV1.ClassesControleur
                 lstTchCible.RetirerTache(item);
             }
         }
-
         public static void MiseAJourTache(Tache oldTch, Tache newTch)
         {
             ListeTachesPrincipale.MiseAJourTache(oldTch, newTch);
         }
-
         public static void AjouterProgramme(string itl, TimeSpan dr)
         {
             ListeTachesPrincipale.AjouterProgramme(new Programme(itl, dr));
         }
-
         public static void RetirerProgrammes(System.Collections.IList lstPrg)
         {
             List<Programme> tmpLstPrg = new List<Programme>();
@@ -155,12 +146,10 @@ namespace TodoListV1.ClassesControleur
                 ListeTachesPrincipale.RetirerProgramme(item);
             }
         }
-
         public static void MiseAJourProgramme(Programme oldPrg, Programme newPrg)
         {
             ListeTachesPrincipale.MiseAJourProgramme(oldPrg, newPrg);
         }
-
 
         // Sauvegarde et chargement XML
         public static void SerialiserListe()
@@ -173,7 +162,6 @@ namespace TodoListV1.ClassesControleur
             serialiseur.Serialize(ecrivain, ListeTachesPrincipale);
             ecrivain.Close();
         }
-
         public static void DeSerialiserListe()
         {
             XmlSerializer serialiseur = new XmlSerializer(typeof(ListePrincipale));
@@ -182,7 +170,6 @@ namespace TodoListV1.ClassesControleur
             lecteur.Close();
             ListeTachesPrincipale.MiseAJourTempsTotal();
         }
-
         public static void InitialiserProgrammes()
         {
             // Checke l'enesemble des tâches présentes dans les programmes, les dédoublonne, puis initialise les temps totaux

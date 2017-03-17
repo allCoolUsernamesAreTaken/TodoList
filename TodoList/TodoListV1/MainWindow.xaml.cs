@@ -23,12 +23,11 @@ namespace TodoListV1
     /// </summary>
     public partial class MainWindow : Window
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private int _heures;
         private int _minutes;
 
-
-        // GETTERS & SETTERS
+        // GETTERS & SETTERS =========================
         public int Heures
         {
             get
@@ -41,7 +40,6 @@ namespace TodoListV1
                 _heures = value;
             }
         }
-
         public int Minutes
         {
             get
@@ -64,8 +62,7 @@ namespace TodoListV1
             }
         }
 
-
-        // LANCEMENT DU PROGRAMME
+        // LANCEMENT DU PROGRAMME =========================
         public MainWindow()
         {
             InitializeComponent(); // Initialisation automatique
@@ -84,18 +81,15 @@ namespace TodoListV1
             this.lblDuree.DataContext = this.LabelDuree;
         }
 
-
-        // METHODES
+        // METHODES =========================
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             PapaJoe.CreerTache(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
         }
-
         private void btnRetirer_Click(object sender, RoutedEventArgs e)
         {
             PapaJoe.RetirerTaches(this.lstVwListeTaches.SelectedItems, PapaJoe.ListeTachesPrincipale);
         }
-
         private void btnEditer_Click(object sender, RoutedEventArgs e)
         {
             foreach (Tache item in this.lstVwListeTaches.SelectedItems)

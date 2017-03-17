@@ -17,7 +17,7 @@ namespace TodoListV1.ClassesMetier
     [Serializable]
     public class Tache : IDisposable, INotifyPropertyChanged
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private string _intitule;
         private TimeSpan _duree;
         private Statuts _statut;
@@ -25,7 +25,7 @@ namespace TodoListV1.ClassesMetier
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // GETTERS & SETTERS
+        // GETTERS & SETTERS =========================
         [XmlAttribute()]
         public string Intitule
         {
@@ -131,14 +131,12 @@ namespace TodoListV1.ClassesMetier
             }
         }
 
-
-        // CONSTRUCTEURS
+        // CONSTRUCTEURS =========================
         public Tache() : base() {
             this.DateCreation = DateTime.UtcNow;
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
-
         public Tache(string itl, double dr, Statuts stt) // Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
         {
             this.Intitule = itl;
@@ -150,7 +148,6 @@ namespace TodoListV1.ClassesMetier
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
-
         public Tache(string itl, TimeSpan tmSpn, Statuts stt) // Constructeur avec TimeSpan
         {
             this.Intitule = itl;
@@ -163,8 +160,7 @@ namespace TodoListV1.ClassesMetier
             System.Threading.Thread.Sleep(1);
         }
 
-
-        // METHODES
+        // METHODES =========================
         public bool ComparerId(object obj)  // ComparerId vérifie si les deux objets ont le même identifiant, donc sont sensés être les mêmes.
         {
             bool result = false;
@@ -177,7 +173,6 @@ namespace TodoListV1.ClassesMetier
             }
             return result;
         }
-
         public override string ToString()
         {
             return this.Intitule 
@@ -185,12 +180,10 @@ namespace TodoListV1.ClassesMetier
                 + " " + StatutsMethodes.StatutsToString(this.Statut)
                 +" " + this.DateCreationString;
         }
-
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
-
         public static TimeSpan DoubleToTimeSpan(Double dbl)
         {
             int dys = (int)(dbl / 24);

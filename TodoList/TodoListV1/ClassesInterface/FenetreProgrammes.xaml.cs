@@ -21,11 +21,11 @@ namespace TodoListV1.ClassesInterface
     /// </summary>
     public partial class FenetreProgrammes : Window
     {
-        // ATTRIBUTS DE CLASSES
+        // ATTRIBUTS DE CLASSES =========================
         private int _heures;
         private int _minutes;
 
-        // GETTERS & SETTERS
+        // GETTERS & SETTERS =========================
         public int Heures
         {
             get
@@ -38,7 +38,6 @@ namespace TodoListV1.ClassesInterface
                 _heures = value;
             }
         }
-
         public int Minutes
         {
             get
@@ -61,15 +60,14 @@ namespace TodoListV1.ClassesInterface
             }
         }
 
-
-        // CONSTRUCTEUR
+        // CONSTRUCTEUR =========================
         public FenetreProgrammes()
         {
             InitializeComponent();
             ReglagesManuels();
         }
 
-        // METHODES
+        // METHODES =========================
         public void ReglagesManuels()
         {
             // Binding de la ListView
@@ -80,7 +78,6 @@ namespace TodoListV1.ClassesInterface
             this.Minutes = 0;
             this.lblDuree.DataContext = this.LabelDuree;
         }
-
         private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             int[] hrsMns = MamaJane.CalculDuree((int)this.sldrDuree.Value);
@@ -88,17 +85,14 @@ namespace TodoListV1.ClassesInterface
             this.Minutes = hrsMns[1];
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
-
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             PapaJoe.AjouterProgramme(this.txtBxIntitule.Text, new TimeSpan(0, this.Heures, this.Minutes, 0));
         }
-
         private void btnRetirer_Click(object sender, RoutedEventArgs e)
         {
             PapaJoe.RetirerProgrammes(this.lstVwListeProgrammes.SelectedItems);
         }
-
         private void btnEditer_Click(object sender, RoutedEventArgs e)
         {
             foreach (Programme item in this.lstVwListeProgrammes.SelectedItems)

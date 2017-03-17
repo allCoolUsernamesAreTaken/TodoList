@@ -14,13 +14,12 @@ namespace TodoListV1.ClassesMetier
     [Serializable]
     public class Programme : ListeTaches
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private string _intitule;
         private TimeSpan _dureeMax;
         private DateTime _dateCreation;
-
-
-        // GETTERS & SETTERS
+        
+        // GETTERS & SETTERS =========================
         [XmlAttribute()]
         public string Intitule
         {
@@ -86,10 +85,8 @@ namespace TodoListV1.ClassesMetier
             }
         }
 
-
-        //CONSTRUCTEURS
+        //CONSTRUCTEURS =========================
         public Programme() : base() {}
-
         public Programme(string itl, TimeSpan drmx)
         {
             this.Intitule = itl;
@@ -99,8 +96,7 @@ namespace TodoListV1.ClassesMetier
             System.Threading.Thread.Sleep(1);
         }
 
-
-        // METHODES
+        // METHODES =========================
         public bool ComparerId(object obj) // ComparerId vérifie si les deux objets ont le même identifiant, donc sont sensés être les mêmes.
         {
             bool result = false;
@@ -113,7 +109,6 @@ namespace TodoListV1.ClassesMetier
             }
             return result;
         }
-
         public override string ToString()
         {
             string str = this.Intitule + " " + this.DureeMax.ToString() + "\n";

@@ -16,12 +16,12 @@ namespace TodoListV1.ClassesMetier
     [Serializable]
     public class ListePrincipale : ListeTaches
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private DateTime _sauvegardeTime;
         private ObservableCollection<Programme> _listeProgrammes;
         private string _message;
 
-        // GETTERS & SETTERS
+        // GETTERS & SETTERS =========================
         [XmlAttribute()]
         public DateTime SauvegardeTime
         {
@@ -61,9 +61,8 @@ namespace TodoListV1.ClassesMetier
                 _message = value;
             }
         }
-
-
-        // METHODES
+        
+        // METHODES =========================
         public override void RetirerTache(Tache tch)
         {
             base.RetirerTache(tch);
@@ -76,7 +75,6 @@ namespace TodoListV1.ClassesMetier
                 }
             }
         }
-
         public override void MiseAJourTache(Tache tch, Tache newTch)
         {
             base.MiseAJourTache(tch, newTch);
@@ -107,7 +105,6 @@ namespace TodoListV1.ClassesMetier
             }
             return false;
         } // TODO : vérifier la pertinence de la vérification systématique.
-
         public void AjouterProgramme(Programme prg)
         {
             if (this.ListeProgrammes == null)
@@ -125,7 +122,6 @@ namespace TodoListV1.ClassesMetier
                 this.ListeProgrammes.Add(prg);
             }
         }
-
         public void RetirerProgramme(Programme prg)
         {
             if (this.ChercherProgramme(prg))
@@ -133,7 +129,6 @@ namespace TodoListV1.ClassesMetier
                 this.ListeProgrammes.Remove(prg);
             }
         }
-
         public void MiseAJourProgramme(Programme prg, Programme newPrg)
         {
             Programme majPrg = this.ListeProgrammes.FirstOrDefault(p => p.ComparerId(prg));

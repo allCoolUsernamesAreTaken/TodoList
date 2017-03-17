@@ -24,13 +24,12 @@ namespace TodoListV1.ClassesInterface
     /// </summary>
     public partial class FenetreEditerTache : Window
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private Tache _tacheTraitee;
         private int _heures;
         private int _minutes;
-
-
-        // GETTERS & SETTERS
+        
+        // GETTERS & SETTERS =========================
         public Tache TacheTraitee
         {
             get
@@ -43,7 +42,6 @@ namespace TodoListV1.ClassesInterface
                 _tacheTraitee = value;
             }
         }
-
         public int Heures
         {
             get
@@ -56,7 +54,6 @@ namespace TodoListV1.ClassesInterface
                 _heures = value;
             }
         }
-
         public int Minutes
         {
             get
@@ -78,9 +75,8 @@ namespace TodoListV1.ClassesInterface
                 return MamaJane.CalculLabelDuree(this.Heures, this.Minutes);
             }
         }
-
-
-        // CONSTRUCTEUR
+        
+        // CONSTRUCTEUR =========================
         public FenetreEditerTache(MainWindow Wndw, Tache tch)
         {
             InitializeComponent();
@@ -95,7 +91,7 @@ namespace TodoListV1.ClassesInterface
             this.cmbBxStatut.ItemsSource = PapaJoe.ListeStatuts;
         }
 
-        // METHODES
+        // METHODES =========================
         // Sauvegarde des modifications de la tâche
         private void btnSauver_Click(object sender, RoutedEventArgs e)
         {

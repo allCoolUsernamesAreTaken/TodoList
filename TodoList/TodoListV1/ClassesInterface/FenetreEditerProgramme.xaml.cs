@@ -24,14 +24,12 @@ namespace TodoListV1.ClassesInterface
     /// </summary>
     public partial class FenetreEditerProgramme : Window
     {
-
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private Programme _programmeTraite;
         private int _heures;
         private int _minutes;
-
-
-        // GETTERS & SETTERS
+        
+        // GETTERS & SETTERS =========================
         public Programme ProgrammeTraite
         {
             get
@@ -44,7 +42,6 @@ namespace TodoListV1.ClassesInterface
                 _programmeTraite = value;
             }
         }
-
         public int Heures
         {
             get
@@ -57,7 +54,6 @@ namespace TodoListV1.ClassesInterface
                 _heures = value;
             }
         }
-
         public int Minutes
         {
             get
@@ -80,8 +76,7 @@ namespace TodoListV1.ClassesInterface
             }
         }
 
-
-        // CONSTRUCTEUR
+        // CONSTRUCTEUR =========================
         public FenetreEditerProgramme(FenetreProgrammes Wndw, Programme prg)
         {
             InitializeComponent();
@@ -98,8 +93,7 @@ namespace TodoListV1.ClassesInterface
 
         }
 
-        // METHODES
-        // Sauvegarde des modifications du programme
+        // METHODES =========================
         private void btnSauver_Click(object sender, RoutedEventArgs e)
         {
             // Variables de validation ou d'erreur
@@ -121,7 +115,6 @@ namespace TodoListV1.ClassesInterface
             }
 
         }
-
         private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             int[] hrsMns = MamaJane.CalculDuree((int)this.sldrDuree.Value);
@@ -129,7 +122,6 @@ namespace TodoListV1.ClassesInterface
             this.Minutes = hrsMns[1];
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
-
         private void btnAjouterTache_Click(object sender, RoutedEventArgs e)
         {
             foreach (Tache tch in this.lstVwListeTaches.SelectedItems)
@@ -137,7 +129,6 @@ namespace TodoListV1.ClassesInterface
                 PapaJoe.AjouterTache(tch, this.ProgrammeTraite);
             }
         }
-
         private void btnRetirerTache_Click(object sender, RoutedEventArgs e)
         {
             PapaJoe.RetirerTaches(this.lstVwTachesProgramme.SelectedItems, this.ProgrammeTraite);

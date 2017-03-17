@@ -16,12 +16,12 @@ namespace TodoListV1.ClassesMetier
     [Serializable]
     public abstract class ListeTaches : INotifyPropertyChanged
     {
-        // ATTRIBUTS DE CLASSE
+        // ATTRIBUTS DE CLASSE =========================
         private ObservableCollection<Tache> _listeDeTaches; // TODO : Vérifier s'il y a une collection plus appropriée
         private TimeSpan _dureeTotale;
         public event PropertyChangedEventHandler PropertyChanged; // Interface INotifyPropertyChanged
 
-        // GETTERS & SETTERS
+        // GETTERS & SETTERS =========================
         [XmlElement()]
         public ObservableCollection<Tache> ListeDeTaches
         {
@@ -50,32 +50,27 @@ namespace TodoListV1.ClassesMetier
             }
         }
 
-
-        // CONSTRUCTEURS
+        // CONSTRUCTEURS =========================
         public ListeTaches(): base() {
             this.ListeDeTaches = new ObservableCollection<Tache>();
         }
-
-
-        // METHODES
+        
+        // METHODES =========================
         public virtual void AjouterTache(Tache tch)
         {
             this.ListeDeTaches.Add(tch);
             MiseAJourTempsTotal();
         }
-
         public virtual void RetirerTache(Tache tch)
         {
             this.ListeDeTaches.Remove(tch);
             MiseAJourTempsTotal();
         }
-
         public virtual void SupprimerTache(Tache tch)
         {
             tch.Dispose();
             MiseAJourTempsTotal();
         }
-
         public virtual void MiseAJourTache(Tache tch, Tache newTch)
         {
             tch = this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
@@ -84,7 +79,6 @@ namespace TodoListV1.ClassesMetier
             tch.Statut = newTch.Statut;
             MiseAJourTempsTotal();
         }
-
         public virtual void MiseAJourTempsTotal()
         {
             DureeTotale = new TimeSpan(0, 0, 0, 0);
@@ -93,7 +87,6 @@ namespace TodoListV1.ClassesMetier
                 DureeTotale = DureeTotale.Add(item.Duree);
             }
         }
-
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
