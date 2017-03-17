@@ -78,6 +78,8 @@ namespace TodoListV1.ClassesInterface
             this.Minutes = 0;
             this.lblDuree.DataContext = this.LabelDuree;
         }
+
+        // Déclencheurs
         private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             int[] hrsMns = MamaJane.CalculDuree((int)this.sldrDuree.Value);

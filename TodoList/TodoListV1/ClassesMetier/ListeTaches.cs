@@ -81,7 +81,7 @@ namespace TodoListV1.ClassesMetier
         }
         public virtual void MiseAJourTache(Tache tch, Tache newTch)
         {
-            tch = this.RecupereTache(tch);
+            tch = this.RecupererTache(tch);
             tch.Intitule = newTch.Intitule;
             tch.Duree = newTch.Duree;
             tch.Statut = newTch.Statut;
@@ -98,9 +98,9 @@ namespace TodoListV1.ClassesMetier
         }
         public virtual bool ContientTache(Tache tch)
         {
-            return RecupereTache(tch) != null;
+            return RecupererTache(tch) != null;
         }
-        public virtual Tache RecupereTache(Tache tch)
+        public virtual Tache RecupererTache(Tache tch)
         {
             return this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
         }

@@ -92,7 +92,6 @@ namespace TodoListV1.ClassesInterface
         }
 
         // METHODES =========================
-        // Sauvegarde des modifications de la tâche
         private void btnSauver_Click(object sender, RoutedEventArgs e)
         {
             // Variables de validation ou d'erreur
@@ -115,7 +114,6 @@ namespace TodoListV1.ClassesInterface
                 MessageBox.Show(errorStr);
             }
         }
-
         private void sldrDuree_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             int[] hrsMns = MamaJane.CalculDuree((int)this.sldrDuree.Value);

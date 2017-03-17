@@ -109,7 +109,6 @@ namespace TodoListV1
         {
             PapaJoe.SerialiserListe();
         }
-
         private void btnDeserialiser_Click(object sender, RoutedEventArgs e)
         {
             PapaJoe.DeSerialiserListe();

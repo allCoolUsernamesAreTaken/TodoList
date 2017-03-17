@@ -134,7 +134,6 @@ namespace TodoListV1.ClassesMetier
             majPrg.Intitule = newPrg.Intitule;
             majPrg.DureeMax = newPrg.DureeMax;
         }
-
         public Programme RecupererProgramme(Programme prg)
         {
             return this.ListeProgrammes.FirstOrDefault(p => p.ComparerId(prg));
