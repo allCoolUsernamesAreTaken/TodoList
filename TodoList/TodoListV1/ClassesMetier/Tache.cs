@@ -23,6 +23,7 @@ namespace TodoListV1.ClassesMetier
         private Statuts _statut;
         private DateTime _dateCreation;
         private string _notes;
+        private ContrainteTemps _contrainteTps;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -96,6 +97,21 @@ namespace TodoListV1.ClassesMetier
                 OnPropertyChanged("Notes");
             }
         }
+        [XmlElement()]
+        public ContrainteTemps ContrainteTps
+        {
+            get
+            {
+                return _contrainteTps;
+            }
+
+            set
+            {
+                _contrainteTps = value;
+                OnPropertyChanged("ContrainteTpsString");
+            }
+        }
+
 
         // Getters & Setters spéciaux
         [XmlIgnore()]
@@ -132,6 +148,14 @@ namespace TodoListV1.ClassesMetier
                 return _dateCreation.ToString();
             }
         }
+        [XmlIgnore()]
+        public string ContrainteTpsString
+        {
+            get
+            {
+                return (this.ContrainteTps == null) ? "Aucune contrainte" : _contrainteTps.ToString();
+            }
+        }
         [XmlAttribute()]
         public string DureeXml // Un TimeSpan ne peut pas être serialisé tel quel. On passe donc par un string.
         {
@@ -152,22 +176,14 @@ namespace TodoListV1.ClassesMetier
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
         }
-        public Tache(string itl, double dr, Statuts stt, string nts) // Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
-        {
-            this.Intitule = itl;
-            this.Duree = DoubleToTimeSpan(dr);
-            this.Statut = stt;
-            this.Notes = nts;
-            this.DateCreation = DateTime.UtcNow;
-            // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
-            System.Threading.Thread.Sleep(1);
-        }
-        public Tache(string itl, TimeSpan tmSpn, Statuts stt, string nts) // Constructeur avec TimeSpan
+        public Tache(string itl, double dr, Statuts stt, string nts = null, ContrainteTemps ctrTps = null) : this(itl, DoubleToTimeSpan(dr), stt, nts, ctrTps) { }// Constructeur avec doubleToTimeSpan. Si supprimé, supprimer aussi DoubleToTimeSpan()
+        public Tache(string itl, TimeSpan tmSpn, Statuts stt, string nts = null, ContrainteTemps ctrTps = null) // Constructeur avec TimeSpan
         {
             this.Intitule = itl;
             this.Duree = tmSpn;
             this.Statut = stt;
             this.Notes = nts;
+            this.ContrainteTps = ctrTps;
             this.DateCreation = DateTime.UtcNow;
             // Le Thread.Sleep permet d'empêcher que deux tâches puissent être créées à la même milliseconde.
             System.Threading.Thread.Sleep(1);
@@ -203,6 +219,20 @@ namespace TodoListV1.ClassesMetier
             int hrs = (int)(dbl % 24);
             int mns = (int)((dbl % 1) * 60);
             return new TimeSpan(dys, hrs, mns, 0);
+        }
+        public void UrgenceStatut()
+        {
+            if (this.ContrainteTps != null)
+            {
+                if (this.ContrainteTps.EstEnRetard())
+                {
+                    this.Statut = Statuts.enRetard;
+                }
+                else if (this.ContrainteTps.EstUrgent())
+                {
+                    this.Statut = Statuts.urgent;
+                }
+            }
         }
 
         // Méthode de l'interface INotifyPropertyChanged

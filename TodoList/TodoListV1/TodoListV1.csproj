@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ClassesInterface\FenetreEditerContrainte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClassesInterface\FenetreEditerProgramme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +81,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ClassesControleur\PapaJoe.cs" />
+    <Compile Include="ClassesInterface\FenetreEditerContrainte.xaml.cs">
+      <DependentUpon>FenetreEditerContrainte.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassesInterface\FenetreEditerProgramme.xaml.cs">
       <DependentUpon>FenetreEditerProgramme.xaml</DependentUpon>
     </Compile>
@@ -87,6 +94,7 @@
       <DependentUpon>FenetreProgrammes.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClassesInterface\MamaJane.cs" />
+    <Compile Include="ClassesMetier\ContrainteTemps.cs" />
     <Compile Include="ClassesMetier\ListePrincipale.cs" />
     <Compile Include="ClassesMetier\ListeTaches.cs" />
     <Compile Include="ClassesMetier\Programme.cs" />

@@ -10,14 +10,16 @@
 
         <!-- Formulaire et boutons de contrôle -->
         <TextBox x:Name="txtBxIntitule" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Path=Intitule, Mode=OneTime}" VerticalAlignment="Top" Width="272"/>
-        
+
         <Slider x:Name="sldrDuree" HorizontalAlignment="Left" Margin="108,39,0,0" VerticalAlignment="Top" Width="174" SmallChange="1" Maximum="72" ValueChanged="sldrDuree_ValueChanged"/>
         <Label x:Name="lblDuree" Content="{Binding UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="93" Height="23"/>
 
         <ComboBox x:Name="cmbBxStatut" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=Statut, Mode=OneTime}"/>
-        <TextBox x:Name="txtBxNotes" HorizontalAlignment="Left" Height="128" Margin="10,100,0,0" TextWrapping="Wrap" Text="{Binding Path=Notes, Mode=OneTime}" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="txtBxNotes" HorizontalAlignment="Left" Height="107" Margin="10,121,0,0" TextWrapping="Wrap" Text="{Binding Path=Notes, Mode=OneTime}" VerticalAlignment="Top" Width="272"/>
 
         <Button x:Name="btnSauver" Content="Sauver" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="75" Click="btnSauver_Click"/>
+        <Button x:Name="btnEditerCtr" Content="Editer contrainte" HorizontalAlignment="Left" Margin="183,96,0,0" VerticalAlignment="Top" Width="99"/>
+        <Label x:Name="lblContrainte" Content="{Binding Path=ContrainteTpsString, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="23" Width="168"/>
 
     </Grid>
 </Window>
