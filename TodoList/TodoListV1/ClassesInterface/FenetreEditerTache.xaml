@@ -18,7 +18,7 @@
         <TextBox x:Name="txtBxNotes" HorizontalAlignment="Left" Height="107" Margin="10,121,0,0" TextWrapping="Wrap" Text="{Binding Path=Notes, Mode=OneTime}" VerticalAlignment="Top" Width="272"/>
 
         <Button x:Name="btnSauver" Content="Sauver" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="75" Click="btnSauver_Click"/>
-        <Button x:Name="btnEditerCtr" Content="Editer contrainte" HorizontalAlignment="Left" Margin="183,96,0,0" VerticalAlignment="Top" Width="99"/>
+        <Button x:Name="btnEditerCtr" Content="Editer contrainte" HorizontalAlignment="Left" Margin="183,96,0,0" VerticalAlignment="Top" Width="99" Click="btnEditerCtr_Click"/>
         <Label x:Name="lblContrainte" Content="{Binding Path=ContrainteTpsString, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="23" Width="168"/>
 
     </Grid>

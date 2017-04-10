@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,14 @@ namespace TodoListV1.ClassesMetier
     /// Classe regroupant les caractéristiques de contraintes de temps d'une tâche, et les méthodes les concernant
     /// </summary>
     [Serializable]
-    public class ContrainteTemps
+    public class ContrainteTemps : INotifyPropertyChanged
     {
         // ATTRIBUTS DE CLASSE =========================
         private DateTime _dateLimite;
         private TimeSpan _delaiUrgence;
         private TimeSpan _periodicite;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         // GETTERS & SETTERS =========================
 
@@ -32,6 +35,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _dateLimite = value;
+                OnPropertyChanged("DateLimite");
             }
         }
         [XmlIgnore()]
@@ -45,6 +49,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _delaiUrgence = value;
+                OnPropertyChanged("DelaiUrgence");
             }
         }
         [XmlIgnore()]
@@ -58,6 +63,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _periodicite = value;
+                OnPropertyChanged("Periodicite");
             }
         }
 
@@ -108,6 +114,16 @@ namespace TodoListV1.ClassesMetier
         public override String ToString()
         {
             return this.DateLimite.ToString();
+        }
+
+        // Méthode de l'interface INotifyPropertyChanged
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
 
     }

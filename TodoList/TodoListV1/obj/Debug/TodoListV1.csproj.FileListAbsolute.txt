@@ -50,3 +50,5 @@ C:\Users\angry\Source\Repos\TodoList\TodoList\TodoListV1\obj\Debug\TodoListV1.ex
 C:\Users\angry\Source\Repos\TodoList\TodoList\TodoListV1\obj\Debug\TodoListV1.pdb
 C:\Users\angry\Source\Repos\TodoList\TodoList\TodoListV1\obj\Debug\ClassesInterface\FenetreEditerProgramme.g.cs
 C:\Users\angry\Source\Repos\TodoList\TodoList\TodoListV1\obj\Debug\ClassesInterface\FenetreEditerProgramme.baml
+C:\Users\angry\Source\Repos\TodoList\TodoList\TodoListV1\obj\Debug\ClassesInterface\FenetreEditerContrainte.g.cs
+C:\Users\angry\Source\Repos\TodoList\TodoList\TodoListV1\obj\Debug\ClassesInterface\FenetreEditerContrainte.baml

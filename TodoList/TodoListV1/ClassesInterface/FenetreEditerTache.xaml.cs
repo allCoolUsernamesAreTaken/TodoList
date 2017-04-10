@@ -121,5 +121,9 @@ namespace TodoListV1.ClassesInterface
             this.Minutes = hrsMns[1];
             this.lblDuree.DataContext = this.LabelDuree; // TODO : vérifier pourquoi le refresh ne se fait pas automatiquement.
         }
+        private void btnEditerCtr_Click(object sender, RoutedEventArgs e)
+        {
+            new FenetreEditerContrainte(this.TacheTraitee.ContrainteTps).Show();
+        }
     }
 }

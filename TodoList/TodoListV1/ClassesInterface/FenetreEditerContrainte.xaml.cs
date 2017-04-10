@@ -38,13 +38,27 @@ namespace TodoListV1.ClassesInterface
             }
         }
 
+        // Getters & setters spéciaux
+        
+
         // CONSTRUCTEUR =========================
         public FenetreEditerContrainte(ContrainteTemps ctrTps)
         {
             InitializeComponent();
-            this.ContrainteTraitee = ctrTps;
+            this.ContrainteTraitee = (ctrTps == null) ? new ContrainteTemps() : ctrTps;
             this.DataContext = ContrainteTraitee;
         }
 
+        // METHODES
+        private void cal_Click(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime? myDate = this.cal.SelectedDate;
+            if(myDate != null)
+            {
+                this.ContrainteTraitee.DateLimite = (DateTime)myDate;
+                MessageBox.Show(this.ContrainteTraitee.ToString());
+            }
+
+        }
     }
 }
