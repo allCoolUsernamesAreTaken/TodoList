@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListePrincipale xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2017-03-17T21:08:17.0557767Z">
-  <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6371528Z" DureeXml="PT3H45M" />
+<ListePrincipale xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SauvegardeTime="2017-04-21T13:39:17.8647989Z">
+  <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6371528Z" DureeXml="PT3H45M">
+    <ContrainteTps DateLimite="2017-03-30T00:00:00" DelaiXml="PT0S" PeriodiciteXml="PT0S" />
+  </ListeDeTaches>
   <ListeDeTaches Intitule="Danse" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6411557Z" DureeXml="PT2H45M" />
   <ListeDeTaches Intitule="Courses" Statut="aFaire" DateCreation="2016-12-25T18:42:39.9001226Z" DureeXml="PT1H" />
   <ListeDeTaches Intitule="Prélèvement" Statut="aFaire" DateCreation="2017-03-17T20:25:12.84895Z" DureeXml="PT1H30M" />
@@ -12,7 +14,9 @@
   </ListeDeTaches>
   <ListeProgrammes Intitule="Boulot" DateCreation="2016-11-28T21:00:46.6431599Z" DureeMaxXml="PT3H45M">
     <ListeDeTaches Intitule="Ménage" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6321502Z" DureeXml="PT2H" />
-    <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6371528Z" DureeXml="PT3H45M" />
+    <ListeDeTaches Intitule="Travail" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6371528Z" DureeXml="PT3H45M">
+      <ContrainteTps DateLimite="2017-03-30T00:00:00" DelaiXml="PT0S" PeriodiciteXml="PT0S" />
+    </ListeDeTaches>
   </ListeProgrammes>
   <ListeProgrammes Intitule="Loisirs" DateCreation="2016-11-28T21:00:46.6461602Z" DureeMaxXml="PT2H15M">
     <ListeDeTaches Intitule="Jeux" Statut="aFaire" DateCreation="2016-11-28T21:00:46.6351524Z" DureeXml="PT1H30M" />

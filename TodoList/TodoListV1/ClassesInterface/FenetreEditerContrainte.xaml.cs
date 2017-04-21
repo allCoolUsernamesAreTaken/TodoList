@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TodoListV1.ClassesControleur;
 using TodoListV1.ClassesMetier;
 
 namespace TodoListV1.ClassesInterface
@@ -23,6 +24,7 @@ namespace TodoListV1.ClassesInterface
     {
         // ATTRIBUTS DE CLASSE =========================
         private ContrainteTemps _contrainteTraitee;
+        private DateTime _dateCreationTache;
 
         // GETTERS & SETTERS =========================
         public ContrainteTemps ContrainteTraitee
@@ -37,16 +39,37 @@ namespace TodoListV1.ClassesInterface
                 _contrainteTraitee = value;
             }
         }
+        public DateTime DateCreationTache
+        {
+            get
+            {
+                return _dateCreationTache;
+            }
+
+            set
+            {
+                _dateCreationTache = value;
+            }
+        }
 
         // Getters & setters spéciaux
-        
+
 
         // CONSTRUCTEUR =========================
-        public FenetreEditerContrainte(ContrainteTemps ctrTps)
+        public FenetreEditerContrainte(Tache tch)
         {
             InitializeComponent();
-            this.ContrainteTraitee = (ctrTps == null) ? new ContrainteTemps() : ctrTps;
+            this.DateCreationTache = tch.DateCreation;
+            this.ContrainteTraitee = (tch.ContrainteTps == null) ? new ContrainteTemps() : tch.ContrainteTps;
             this.DataContext = ContrainteTraitee;
+
+            string str = " jour";
+            for (int i = 0; i < 15; i++)
+            {
+                this.cmbBxDelai.Items.Add(i + str);
+                str = " jours";
+            }
+            this.cmbBxDelai.SelectedIndex = 0;
         }
 
         // METHODES
@@ -55,10 +78,19 @@ namespace TodoListV1.ClassesInterface
             DateTime? myDate = this.cal.SelectedDate;
             if(myDate != null)
             {
-                this.ContrainteTraitee.DateLimite = (DateTime)myDate;
-                MessageBox.Show(this.ContrainteTraitee.ToString());
+                this.lblDateLimite.Content = this.cal.SelectedDate.ToString();
+                //MessageBox.Show(this.ContrainteTraitee.ToString());
             }
 
+        }
+
+        private void btnSauver_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? myDate = this.cal.SelectedDate;
+            if (myDate != null)
+            {
+                PapaJoe.MiseAJourTache(this.DateCreationTache, new ContrainteTemps() { DateLimite = (DateTime)myDate });
+            }
         }
     }
 }

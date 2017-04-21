@@ -36,6 +36,7 @@ namespace TodoListV1.ClassesMetier
             {
                 _dateLimite = value;
                 OnPropertyChanged("DateLimite");
+                OnPropertyChanged("DateLimiteString");
             }
         }
         [XmlIgnore()]
@@ -94,6 +95,14 @@ namespace TodoListV1.ClassesMetier
                 _periodicite = string.IsNullOrEmpty(value) ? TimeSpan.Zero : XmlConvert.ToTimeSpan(value);
             }
         }
+        [XmlIgnore()]
+        public string DateLimiteString
+        {
+            get
+            {
+                return DateLimite.ToString("dd/MM/yyyy");
+            }
+        }
 
         // CONSTRUCTEUR =========================
         public ContrainteTemps() : base() {}
@@ -113,7 +122,7 @@ namespace TodoListV1.ClassesMetier
 
         public override String ToString()
         {
-            return this.DateLimite.ToString();
+            return this.DateLimiteString;
         }
 
         // Méthode de l'interface INotifyPropertyChanged

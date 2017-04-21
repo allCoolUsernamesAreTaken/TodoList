@@ -108,6 +108,7 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _contrainteTps = value;
+                OnPropertyChanged("ContrainteTps");
                 OnPropertyChanged("ContrainteTpsString");
             }
         }

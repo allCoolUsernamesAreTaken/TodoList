@@ -19,7 +19,7 @@
 
         <Button x:Name="btnSauver" Content="Sauver" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="75" Click="btnSauver_Click"/>
         <Button x:Name="btnEditerCtr" Content="Editer contrainte" HorizontalAlignment="Left" Margin="183,96,0,0" VerticalAlignment="Top" Width="99" Click="btnEditerCtr_Click"/>
-        <Label x:Name="lblContrainte" Content="{Binding Path=ContrainteTpsString, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="23" Width="168"/>
+        <Label x:Name="lblContrainte" Content="{Binding Path=ContrainteTpsString, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="23" Width="168"/>
 
     </Grid>
 </Window>

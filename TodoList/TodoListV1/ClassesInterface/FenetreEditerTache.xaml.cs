@@ -123,7 +123,7 @@ namespace TodoListV1.ClassesInterface
         }
         private void btnEditerCtr_Click(object sender, RoutedEventArgs e)
         {
-            new FenetreEditerContrainte(this.TacheTraitee.ContrainteTps).Show();
+            new FenetreEditerContrainte(this.TacheTraitee).Show();
         }
     }
 }

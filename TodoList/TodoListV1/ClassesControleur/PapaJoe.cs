@@ -130,6 +130,10 @@ namespace TodoListV1.ClassesControleur
         {
             ListeTachesPrincipale.MiseAJourTache(oldTch, newTch);
         }
+        public static void MiseAJourTache(DateTime dtCrt, ContrainteTemps ctrTps)
+        {
+            ListeTachesPrincipale.MiseAJourTache(dtCrt, ctrTps);
+        }
         public static void AjouterProgramme(string itl, TimeSpan dr)
         {
             ListeTachesPrincipale.AjouterProgramme(new Programme(itl, dr));

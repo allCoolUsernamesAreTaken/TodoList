@@ -88,6 +88,11 @@ namespace TodoListV1.ClassesMetier
             tch.Notes = newTch.Notes;
             MiseAJourTempsTotal();
         }
+        public virtual void MiseAJourTache(DateTime dtCrt, ContrainteTemps ctrTps)
+        {
+            Tache tch = this.RecupererTache(dtCrt);
+            tch.ContrainteTps = ctrTps;
+        }
         public virtual void MiseAJourTempsTotal()
         {
             DureeTotale = new TimeSpan(0, 0, 0, 0);
@@ -103,6 +108,10 @@ namespace TodoListV1.ClassesMetier
         public virtual Tache RecupererTache(Tache tch)
         {
             return this.ListeDeTaches.FirstOrDefault(t => t.ComparerId(tch));
+        }
+        public virtual Tache RecupererTache(DateTime dtCrt)
+        {
+            return this.ListeDeTaches.FirstOrDefault(t => t.DateCreation.Equals(dtCrt));
         }
 
         // Méthode de l'interface INotifyPropertyChanged
