@@ -103,6 +103,14 @@ namespace TodoListV1.ClassesMetier
                 return DateLimite.ToString("dd/MM/yyyy");
             }
         }
+        [XmlIgnore()]
+        public string DelaiUrgenceString
+        {
+            get
+            {
+                return DelaiUrgence.Days < 2 ? DelaiUrgence.Days + "jour" : DelaiUrgence.Days + "jours";
+            }
+        }
 
         // CONSTRUCTEUR =========================
         public ContrainteTemps() : base() {}
@@ -122,7 +130,7 @@ namespace TodoListV1.ClassesMetier
 
         public override String ToString()
         {
-            return this.DateLimiteString;
+            return this.DateLimiteString + " " + this.DelaiUrgenceString;
         }
 
         // Méthode de l'interface INotifyPropertyChanged

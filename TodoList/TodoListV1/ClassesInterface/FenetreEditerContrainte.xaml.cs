@@ -63,13 +63,17 @@ namespace TodoListV1.ClassesInterface
             this.ContrainteTraitee = (tch.ContrainteTps == null) ? new ContrainteTemps() : tch.ContrainteTps;
             this.DataContext = ContrainteTraitee;
 
-            string str = " jour";
+            // Calendrier
+            this.cal.SelectedDate = this.ContrainteTraitee.DateLimite;
+
+            // Combobox delai d'urgence
             for (int i = 0; i < 15; i++)
             {
-                this.cmbBxDelai.Items.Add(i + str);
-                str = " jours";
+                String str = i < 2 ? " jour" : " jours";
+                this.cmbBxDelai.Items.Add(new KeyValuePair<String, int>(i + str, i));
             }
-            this.cmbBxDelai.SelectedIndex = 0;
+            this.cmbBxDelai.DisplayMemberPath = "Key";
+            this.cmbBxDelai.SelectedIndex = this.ContrainteTraitee.DelaiUrgence == null ? 0 : this.ContrainteTraitee.DelaiUrgence.Days ;
         }
 
         // METHODES
@@ -79,18 +83,22 @@ namespace TodoListV1.ClassesInterface
             if(myDate != null)
             {
                 this.lblDateLimite.Content = this.cal.SelectedDate.ToString();
-                //MessageBox.Show(this.ContrainteTraitee.ToString());
             }
 
         }
 
         private void btnSauver_Click(object sender, RoutedEventArgs e)
         {
-            DateTime? myDate = this.cal.SelectedDate;
-            if (myDate != null)
+            // On envoie si au choix la date sélectionnée n'est pas nulle, ou une date limite est déjà établie
+            if (this.cal.SelectedDate != null || this.ContrainteTraitee.DateLimite != null)
             {
-                PapaJoe.MiseAJourTache(this.DateCreationTache, new ContrainteTemps() { DateLimite = (DateTime)myDate });
+                PapaJoe.MiseAJourTache(this.DateCreationTache, new ContrainteTemps()
+                {
+                    DateLimite = (DateTime)this.cal.SelectedDate,
+                    DelaiUrgence = new TimeSpan(((KeyValuePair<String, int>)this.cmbBxDelai.SelectedItem).Value, 0, 0, 0)
+                });
             }
         }
+
     }
 }
