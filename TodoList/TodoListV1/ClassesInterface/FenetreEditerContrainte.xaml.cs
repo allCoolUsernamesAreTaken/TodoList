@@ -25,7 +25,7 @@ namespace TodoListV1.ClassesInterface
         // ATTRIBUTS DE CLASSE =========================
         private ContrainteTemps _contrainteTraitee;
         private DateTime _dateCreationTache;
-
+        
         // GETTERS & SETTERS =========================
         public ContrainteTemps ContrainteTraitee
         {
@@ -51,7 +51,7 @@ namespace TodoListV1.ClassesInterface
                 _dateCreationTache = value;
             }
         }
-
+        
         // Getters & setters spéciaux
 
 
@@ -74,6 +74,9 @@ namespace TodoListV1.ClassesInterface
             }
             this.cmbBxDelai.DisplayMemberPath = "Key";
             this.cmbBxDelai.SelectedIndex = this.ContrainteTraitee.DelaiUrgence == null ? 0 : this.ContrainteTraitee.DelaiUrgence.Days ;
+
+            // Combobox periode
+            
         }
 
         // METHODES

@@ -10,6 +10,7 @@
         <Label x:Name="lblDateLimite" Content="{Binding Path=DateLimiteString, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="34" Margin="10,10,0,0" VerticalAlignment="Top" Width="203"/>
         <Calendar x:Name="cal" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Width="183" SelectedDatesChanged="cal_Click"/>
         <ComboBox x:Name="cmbBxDelai" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="203"/>
+        <ComboBox x:Name="cmbBxPeriodicite" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Width="203"/>
         <Button x:Name="btnSauver" Content="Sauver" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="75" Click="btnSauver_Click"/>
 
     </Grid>

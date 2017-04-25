@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoListV1.Exceptions;
 
 namespace TodoListV1.ClassesMetier
 {
@@ -35,7 +36,7 @@ namespace TodoListV1.ClassesMetier
                 case Statuts.enRetard:
                     return "en retard";
                 default:
-                    return "Erreur";
+                    throw new StatutsException("Statut inconnu.");
             }
         }
     }

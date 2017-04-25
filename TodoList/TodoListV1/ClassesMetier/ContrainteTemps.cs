@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using TodoListV1.Exceptions;
 
 namespace TodoListV1.ClassesMetier
 {
@@ -18,7 +19,7 @@ namespace TodoListV1.ClassesMetier
         // ATTRIBUTS DE CLASSE =========================
         private DateTime _dateLimite;
         private TimeSpan _delaiUrgence;
-        private TimeSpan _periodicite;
+        private Periodicite _periodicite;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -53,8 +54,8 @@ namespace TodoListV1.ClassesMetier
                 OnPropertyChanged("DelaiUrgence");
             }
         }
-        [XmlIgnore()]
-        public TimeSpan Periodicite
+        [XmlElement()]
+        public Periodicite Periodicite
         {
             get
             {
@@ -80,19 +81,6 @@ namespace TodoListV1.ClassesMetier
             set
             {
                 _delaiUrgence = string.IsNullOrEmpty(value) ? TimeSpan.Zero : XmlConvert.ToTimeSpan(value);
-            }
-        }
-        [XmlAttribute()]
-        public string PeriodiciteXml // Un TimeSpan ne peut pas être serialisé tel quel. On passe donc par un string.
-        {
-            get
-            {
-                return XmlConvert.ToString(_periodicite);
-            }
-
-            set
-            {
-                _periodicite = string.IsNullOrEmpty(value) ? TimeSpan.Zero : XmlConvert.ToTimeSpan(value);
             }
         }
         [XmlIgnore()]
@@ -132,6 +120,30 @@ namespace TodoListV1.ClassesMetier
         {
             return this.DateLimiteString + " " + this.DelaiUrgenceString;
         }
+
+        public DateTime AjoutPeriodicite()
+        {
+            if(this.Periodicite == null)
+            {
+                return this.DateLimite;
+            }else
+            {
+                switch (this.Periodicite.Unite)
+                {
+                    case UnitesTemps.heure:
+                        return this.DateLimite.AddHours(this.Periodicite.Quantite);
+                    case UnitesTemps.jour:
+                        return this.DateLimite.AddDays(this.Periodicite.Quantite);
+                    case UnitesTemps.semaine:
+                        return this.DateLimite.AddDays(this.Periodicite.Quantite*7);
+                    case UnitesTemps.mois:
+                        return this.DateLimite.AddMonths(this.Periodicite.Quantite);
+                    default:
+                        throw new UnitesTempsException("Unité de temps inconnue");
+                }
+            }
+        }
+
 
         // Méthode de l'interface INotifyPropertyChanged
         protected void OnPropertyChanged(string name)

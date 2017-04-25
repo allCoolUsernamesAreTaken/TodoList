@@ -97,11 +97,15 @@
     <Compile Include="ClassesMetier\ContrainteTemps.cs" />
     <Compile Include="ClassesMetier\ListePrincipale.cs" />
     <Compile Include="ClassesMetier\ListeTaches.cs" />
+    <Compile Include="ClassesMetier\Periodicite.cs" />
     <Compile Include="ClassesMetier\Programme.cs" />
     <Compile Include="ClassesMetier\Statuts.cs" />
     <Compile Include="ClassesMetier\Tache.cs" />
+    <Compile Include="ClassesMetier\UnitesTemps.cs" />
     <Compile Include="Exceptions\ListeTachesException.cs" />
     <Compile Include="Exceptions\ListePrincipaleException.cs" />
+    <Compile Include="Exceptions\StatutsException.cs" />
+    <Compile Include="Exceptions\UnitesTempsException.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
