@@ -80,6 +80,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClassesControleur\ActualiseurListeTaches.cs" />
     <Compile Include="ClassesControleur\PapaJoe.cs" />
     <Compile Include="ClassesInterface\FenetreEditerContrainte.xaml.cs">
       <DependentUpon>FenetreEditerContrainte.xaml</DependentUpon>
@@ -129,6 +130,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

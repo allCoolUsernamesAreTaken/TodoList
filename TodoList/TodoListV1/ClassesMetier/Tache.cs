@@ -24,6 +24,7 @@ namespace TodoListV1.ClassesMetier
         private DateTime _dateCreation;
         private string _notes;
         private ContrainteTemps _contrainteTps;
+        private DateTime _idTacheRepetee;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -110,6 +111,19 @@ namespace TodoListV1.ClassesMetier
                 _contrainteTps = value;
                 OnPropertyChanged("ContrainteTps");
                 OnPropertyChanged("ContrainteTpsString");
+            }
+        }
+        [XmlAttribute()]
+        public DateTime idTacheRepetee
+        {
+            get
+            {
+                return _idTacheRepetee;
+            }
+
+            set
+            {
+                _idTacheRepetee = value;
             }
         }
 
@@ -221,9 +235,9 @@ namespace TodoListV1.ClassesMetier
             int mns = (int)((dbl % 1) * 60);
             return new TimeSpan(dys, hrs, mns, 0);
         }
-        public void UrgenceStatut()
+        public void ActualiserStatut()
         {
-            if (this.ContrainteTps != null)
+            if (this.ContrainteTps != null && !this.Statut.Equals(Statuts.fait))
             {
                 if (this.ContrainteTps.EstEnRetard())
                 {
