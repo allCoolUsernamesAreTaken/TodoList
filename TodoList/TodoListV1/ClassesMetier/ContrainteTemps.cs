@@ -118,7 +118,16 @@ namespace TodoListV1.ClassesMetier
 
         public override String ToString()
         {
-            return this.DateLimiteString + " " + this.DelaiUrgenceString;
+            string str = this.DateLimiteString;
+            if(this.DelaiUrgence != null)
+            {
+                str += " | " + this.DelaiUrgenceString;
+            }
+            if(this.Periodicite != null)
+            {
+                str += " | " + this.Periodicite.ToString();
+            }
+            return str;
         }
 
         public DateTime AjoutPeriodicite()

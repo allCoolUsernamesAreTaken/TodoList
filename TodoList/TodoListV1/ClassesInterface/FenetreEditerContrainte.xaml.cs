@@ -25,6 +25,8 @@ namespace TodoListV1.ClassesInterface
         // ATTRIBUTS DE CLASSE =========================
         private ContrainteTemps _contrainteTraitee;
         private DateTime _dateCreationTache;
+
+        private List<Periodicite> _listePeriodes;
         
         // GETTERS & SETTERS =========================
         public ContrainteTemps ContrainteTraitee
@@ -51,8 +53,18 @@ namespace TodoListV1.ClassesInterface
                 _dateCreationTache = value;
             }
         }
-        
-        // Getters & setters spéciaux
+        public List<Periodicite> ListePeriodes
+        {
+            get
+            {
+                return _listePeriodes;
+            }
+
+            set
+            {
+                _listePeriodes = value;
+            }
+        }
 
 
         // CONSTRUCTEUR =========================
@@ -73,10 +85,19 @@ namespace TodoListV1.ClassesInterface
                 this.cmbBxDelai.Items.Add(new KeyValuePair<String, int>(i + str, i));
             }
             this.cmbBxDelai.DisplayMemberPath = "Key";
-            this.cmbBxDelai.SelectedIndex = this.ContrainteTraitee.DelaiUrgence == null ? 0 : this.ContrainteTraitee.DelaiUrgence.Days ;
+            this.cmbBxDelai.SelectedIndex = this.ContrainteTraitee.DelaiUrgence == null ? 0 : this.ContrainteTraitee.DelaiUrgence.Days;
 
             // Combobox periode
-            
+            this.ListePeriodes = new List<Periodicite>();
+            this.ListePeriodes.Add(new Periodicite(1, UnitesTemps.jour));
+            this.ListePeriodes.Add(new Periodicite(1, UnitesTemps.semaine));
+            this.ListePeriodes.Add(new Periodicite(2, UnitesTemps.semaine));
+            this.ListePeriodes.Add(new Periodicite(1, UnitesTemps.mois));
+            this.ListePeriodes.Add(new Periodicite(2, UnitesTemps.mois));
+            this.ListePeriodes.Add(new Periodicite(6, UnitesTemps.mois));
+            this.cmbBxPeriodicite.ItemsSource = this.ListePeriodes;
+            this.cmbBxPeriodicite.SelectedIndex = this.ContrainteTraitee.Periodicite == null ? 0 : this.ListePeriodes.FindIndex(prd => prd.Equals(this.ContrainteTraitee.Periodicite));
+
         }
 
         // METHODES
@@ -98,7 +119,8 @@ namespace TodoListV1.ClassesInterface
                 PapaJoe.MiseAJourTache(this.DateCreationTache, new ContrainteTemps()
                 {
                     DateLimite = (DateTime)this.cal.SelectedDate,
-                    DelaiUrgence = new TimeSpan(((KeyValuePair<String, int>)this.cmbBxDelai.SelectedItem).Value, 0, 0, 0)
+                    DelaiUrgence = new TimeSpan(((KeyValuePair<String, int>)this.cmbBxDelai.SelectedItem).Value, 0, 0, 0),
+                    Periodicite = (Periodicite)this.cmbBxPeriodicite.SelectedItem
                 });
             }
         }

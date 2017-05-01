@@ -50,5 +50,19 @@ namespace TodoListV1.ClassesMetier
             this.Unite = ut;
         }
 
+        // METHODES =========================
+        public override string ToString()
+        {
+            return this.Quantite + " " + UnitesTempsMethodes.UniteTempsToString(this.Unite, this.Quantite);
+        }
+
+        public bool Equals(Periodicite pdct)
+        {
+            if(this.Quantite == pdct.Quantite && this.Unite.ToString().Equals(pdct.Unite.ToString()))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

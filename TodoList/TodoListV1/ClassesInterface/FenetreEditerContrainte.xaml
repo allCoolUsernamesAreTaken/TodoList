@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         Title="FenetreEditerContrainte" Height="217.423" Width="417.716">
     <Grid Background="#FF8DB6B6">
-        <Label x:Name="lblDateLimite" Content="{Binding Path=DateLimiteString, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="34" Margin="10,10,0,0" VerticalAlignment="Top" Width="203"/>
         <Calendar x:Name="cal" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Width="183" SelectedDatesChanged="cal_Click"/>
-        <ComboBox x:Name="cmbBxDelai" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="203"/>
-        <ComboBox x:Name="cmbBxPeriodicite" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Width="203"/>
-        <Button x:Name="btnSauver" Content="Sauver" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="75" Click="btnSauver_Click"/>
+        <ComboBox x:Name="cmbBxDelai" HorizontalAlignment="Left" Margin="89,49,0,0" VerticalAlignment="Top" Width="124"/>
+        <ComboBox x:Name="cmbBxPeriodicite" HorizontalAlignment="Left" Margin="89,79,0,0" VerticalAlignment="Top" Width="124"/>
+        <Button x:Name="btnSauver" Content="Sauver" HorizontalAlignment="Left" Margin="14,152,0,0" VerticalAlignment="Top" Width="75" Click="btnSauver_Click"/>
+        
+        <Label x:Name="lblDate" Content="Date :" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label x:Name="lblDateLimite" Content="{Binding Path=DateLimiteString, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="34" Margin="89,10,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label x:Name="lblDelai" Content="Délai :" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label x:Name="lblPeriodicite" Content="Périodicité :" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="74"/>
 
     </Grid>
 </Window>
